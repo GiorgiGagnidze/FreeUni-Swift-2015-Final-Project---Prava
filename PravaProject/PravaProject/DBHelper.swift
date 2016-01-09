@@ -26,7 +26,7 @@ public class DBHelper : NSObject {
         dispatch_async(queue, {
             
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaDb.sqlite")
+            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaDatab.sqlite")
             self.dbPath = path.description
             print(path.description)
             
@@ -56,6 +56,72 @@ public class DBHelper : NSObject {
         addTable("Answers", query: "create table Answers(answerId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, questionId INTEGER, answer text, isTrue INTEGER, FOREIGN KEY(questionId) REFERENCES Questions(questionId))")
         
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
+        
+        var user1 = User()
+        user1.ID = 1
+        user1.name = "nikoloz"
+        user1.password = "pw1"
+        
+        var user2 = User()
+        user2.ID = 2
+        user2.name = "lejava"
+        user2.password = "pw2"
+        
+        user1 = insertUser(user1)!
+        user2 = insertUser(user2)!
+        
+        let highscore1 = HighScore()
+        highscore1.ID = 1
+        highscore1.score = 8
+        highscore1.time = 2
+        highscore1.user = user1
+        
+        let highscore2 = HighScore()
+        highscore2.ID = 2
+        highscore2.score = 1
+        highscore2.time = 8
+        highscore2.user = user1
+        
+        let highscore3 = HighScore()
+        highscore3.ID = 3
+        highscore3.score = 4
+        highscore3.time = 4
+        highscore3.user = user2
+        
+        let highscore4 = HighScore()
+        highscore4.ID = 4
+        highscore4.score = 8
+        highscore4.time = 1
+        highscore4.user = user2
+        
+        let highscore5 = HighScore()
+        highscore5.ID = 5
+        highscore5.score = 8
+        highscore5.time = 1
+        highscore5.user = user1
+    
+        let highscore6 = HighScore()
+        highscore6.ID = 6
+        highscore6.score = 4
+        highscore6.time = 5
+        highscore6.user = user2
+        
+        insertHighScore(highscore1)
+        insertHighScore(highscore2)
+        insertHighScore(highscore3)
+        insertHighScore(highscore4)
+        insertHighScore(highscore5)
+        insertHighScore(highscore6)
+        
+        let highscores1 = selectTopNumberHighScores(6)
+        for (_, element) in highscores1.enumerate() {
+            print(element.toString())
+        }
+        
+        let highscores2 = selectHighScoresByUserID(user2.ID)
+        for (_, element) in highscores2.enumerate() {
+            print(element.toString())
+        }
     }
     
     private func addTable(tableName: String,query: String){
@@ -153,6 +219,23 @@ public class DBHelper : NSObject {
         return topic
     }
     
+    func selectTopics() -> [Topic]
+    {
+        var topics = [Topic]()
+        if let rs = database.executeQuery("select * from Topics",
+            withArgumentsInArray: nil) {
+                while rs.next() {
+                    let topic = Topic()
+                    topic.ID = Int(rs.intForColumn("topicId"))
+                    topic.topic =  rs.stringForColumn("topic")
+                    topics.append(topic)
+                }
+                
+        }
+        return topics
+    }
+
+    
     func insertQuestion(question: Question) {
         let isInserted = database.executeUpdate("INSERT INTO Questions (description, image, topicId) VALUES (?, ?, ?)", withArgumentsInArray: [question.description ,question.image, question.topic.ID])
         if !isInserted {
@@ -234,7 +317,7 @@ public class DBHelper : NSObject {
     func selectHighScoresByUserID(userID: Int) -> [HighScore] {
         var highScores = [HighScore]()
         if let user = selectUser(userID){
-            if let rs = database.executeQuery("select * from Highscores where userID = " + String(userID), withArgumentsInArray: nil) {
+            if let rs = database.executeQuery("select * from Highscores where userID = " + String(userID) + " order by score desc,time asc", withArgumentsInArray: nil) {
                 while rs.next() {
                     let highScore = HighScore()
                     highScore.ID = Int(rs.intForColumn("highscoreId"))
