@@ -85,12 +85,12 @@ public class DBHelper : NSObject {
         question.image = "image1"
         question.topic = topic
         insertQuestion(question)
-        var questions = selectQuestions()
+        let questions = selectQuestions()
         for (_, element) in questions.enumerate() {
             print("for 1: " + element.description)
         }
         insertQuestion(question)
-        var questions2 = selectQuestions(question.topic.ID)
+        let questions2 = selectQuestions(question.topic.ID)
         for (_, element) in questions2.enumerate() {
             print("for 2: " + element.description)
         }
@@ -205,6 +205,8 @@ public class DBHelper : NSObject {
                 question.description =  rs.stringForColumn("description")
                 question.image =  rs.stringForColumn("image")
                 question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                question.answers = selectAnswersByQuestionID(question.ID)
+
                 questions.append(question)
             }
         }
@@ -221,6 +223,8 @@ public class DBHelper : NSObject {
                     question.description =  rs.stringForColumn("description")
                     question.image =  rs.stringForColumn("image")
                     question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                    question.answers = selectAnswersByQuestionID(question.ID)
+                    
                     questions.append(question)
                 }
         }
