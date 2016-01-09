@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Question.swift
 //  PravaProject
 //
 //  Created by Sandro on 1/9/16.
@@ -8,12 +8,11 @@
 
 import Foundation
 
-public class User {
-    
+public class Question {
+
     var ID: Int!
-    var name: String!
-    var password: String!
+    var image: String!
+    var topic: Topic!
+    var answers = [Answer]()
     
 }
-
-

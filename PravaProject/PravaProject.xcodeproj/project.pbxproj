@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		AA5CCEBD1C415B2500EB41C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBC1C415B2500EB41C1 /* Topic.swift */; settings = {ASSET_TAGS = (); }; };
+		AA5CCEBF1C415B7800EB41C1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBE1C415B7800EB41C1 /* Question.swift */; settings = {ASSET_TAGS = (); }; };
 		C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6581C4135A500AD5045 /* FMDatabase.m */; };
 		C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */; };
 		C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		AA5CCEBA1C41552500EB41C1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AA5CCEBC1C415B2500EB41C1 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		AA5CCEBE1C415B7800EB41C1 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C95DF6561C4135A300AD5045 /* PravaProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PravaProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		C95DF6571C4135A500AD5045 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		C95DF6581C4135A500AD5045 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				AA5CCEBA1C41552500EB41C1 /* User.swift */,
+				AA5CCEBC1C415B2500EB41C1 /* Topic.swift */,
+				AA5CCEBE1C415B7800EB41C1 /* Question.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
+				AA5CCEBD1C415B2500EB41C1 /* Topic.swift in Sources */,
 				C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */,
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
@@ -319,6 +326,7 @@
 				AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
+				AA5CCEBF1C415B7800EB41C1 /* Question.swift in Sources */,
 				C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
