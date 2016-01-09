@@ -105,14 +105,23 @@ public class DBHelper : NSObject {
         }
     }
     
-    func insertUser(user: User)
+    // if nil is returned than user is NOT inserted
+    func insertUser(user: User) -> User?
     {
+        if let _ = selectUser(user.name, password: user.password) {
+            return nil;
+        }
         let isInserted = database.executeUpdate("INSERT INTO Users (name, password) VALUES (?, ?)", withArgumentsInArray: [user.name, user.password])
         if !isInserted {
             print("insert 1 table failed: \(database!.lastErrorMessage())")
-            return
+            return nil
         }
-        // todo let userID =  Int(database.lastInsertRowId())
+        let userID =  Int(database.lastInsertRowId())
+        let result = User()
+        result.ID = userID
+        result.name = user.name
+        result.password = user.password
+        return result
     }
     
     func selectUser(userId: Int) -> User?
