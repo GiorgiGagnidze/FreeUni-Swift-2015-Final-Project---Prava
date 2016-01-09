@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; };
-		AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC01C415FCC00EB41C1 /* Question.swift */; settings = {ASSET_TAGS = (); }; };
-		AA5CCEC31C415FFA00EB41C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC21C415FFA00EB41C1 /* Topic.swift */; settings = {ASSET_TAGS = (); }; };
+		AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC01C415FCC00EB41C1 /* Question.swift */; };
+		AA5CCEC31C415FFA00EB41C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC21C415FFA00EB41C1 /* Topic.swift */; };
 		C9330AEA1C415A1100E6AFEB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AE91C415A1100E6AFEB /* Error.swift */; };
 		C9330AEC1C415B5000E6AFEB /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AEB1C415B5000E6AFEB /* Answer.swift */; };
 		C9330AEE1C415BAF00E6AFEB /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AED1C415BAF00E6AFEB /* HighScore.swift */; };
@@ -21,7 +21,6 @@
 		C95DF6681C4136A600AD5045 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DF6671C4136A600AD5045 /* libsqlite3.tbd */; };
 		C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968CE2F1C4153B500AE6316 /* DBHelper.swift */; };
 		C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */; };
-		C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DC1C1A208C00B66D7E /* ViewController.swift */; };
 		C9E679E01C1A208C00B66D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E679DE1C1A208C00B66D7E /* Main.storyboard */; };
 		C9E679E21C1A208C00B66D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E679E11C1A208C00B66D7E /* Assets.xcassets */; };
 		C9E679E51C1A208C00B66D7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E679E31C1A208C00B66D7E /* LaunchScreen.storyboard */; };
@@ -69,7 +68,6 @@
 		C968CE2F1C4153B500AE6316 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		C9E679D71C1A208C00B66D7E /* PravaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PravaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C9E679DC1C1A208C00B66D7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9E679DF1C1A208C00B66D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9E679E11C1A208C00B66D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E679E41C1A208C00B66D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				AA5CCEB91C4154E700EB41C1 /* Model */,
 				C95DF6551C41355D00AD5045 /* FMDB */,
 				C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */,
-				C9E679DC1C1A208C00B66D7E /* ViewController.swift */,
 				C968CE2F1C4153B500AE6316 /* DBHelper.swift */,
 				C9E679DE1C1A208C00B66D7E /* Main.storyboard */,
 				C9E679E11C1A208C00B66D7E /* Assets.xcassets */,
@@ -327,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
-				C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */,
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
