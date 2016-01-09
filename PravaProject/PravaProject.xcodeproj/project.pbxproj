@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6581C4135A500AD5045 /* FMDatabase.m */; };
 		C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */; };
 		C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */; };
@@ -14,7 +15,6 @@
 		C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6611C4135A500AD5045 /* FMResultSet.m */; };
 		C95DF6681C4136A600AD5045 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DF6671C4136A600AD5045 /* libsqlite3.tbd */; };
 		C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968CE2F1C4153B500AE6316 /* DBHelper.swift */; };
-		C968CE331C4153EE00AE6316 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968CE321C4153EE00AE6316 /* Question.swift */; };
 		C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */; };
 		C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DC1C1A208C00B66D7E /* ViewController.swift */; };
 		C9E679E01C1A208C00B66D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E679DE1C1A208C00B66D7E /* Main.storyboard */; };
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA5CCEBA1C41552500EB41C1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C95DF6561C4135A300AD5045 /* PravaProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PravaProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		C95DF6571C4135A500AD5045 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		C95DF6581C4135A500AD5045 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -55,8 +56,7 @@
 		C95DF6601C4135A500AD5045 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		C95DF6611C4135A500AD5045 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		C95DF6671C4136A600AD5045 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		C968CE2F1C4153B500AE6316 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBHelper.swift; path = PravaProject/DBHelper.swift; sourceTree = "<group>"; };
-		C968CE321C4153EE00AE6316 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		C968CE2F1C4153B500AE6316 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		C9E679D71C1A208C00B66D7E /* PravaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PravaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E679DC1C1A208C00B66D7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA5CCEB91C4154E700EB41C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA5CCEBA1C41552500EB41C1 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		C95DF6551C41355D00AD5045 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,19 +125,9 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
-		C968CE311C4153D600AE6316 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C968CE321C4153EE00AE6316 /* Question.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		C9E679CE1C1A208C00B66D7E = {
 			isa = PBXGroup;
 			children = (
-				C968CE311C4153D600AE6316 /* Models */,
-				C968CE2F1C4153B500AE6316 /* DBHelper.swift */,
 				C95DF6671C4136A600AD5045 /* libsqlite3.tbd */,
 				C9E679D91C1A208C00B66D7E /* PravaProject */,
 				C9E679EE1C1A208C00B66D7E /* PravaProjectTests */,
@@ -151,9 +149,11 @@
 		C9E679D91C1A208C00B66D7E /* PravaProject */ = {
 			isa = PBXGroup;
 			children = (
+				AA5CCEB91C4154E700EB41C1 /* Model */,
 				C95DF6551C41355D00AD5045 /* FMDB */,
 				C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */,
 				C9E679DC1C1A208C00B66D7E /* ViewController.swift */,
+				C968CE2F1C4153B500AE6316 /* DBHelper.swift */,
 				C9E679DE1C1A208C00B66D7E /* Main.storyboard */,
 				C9E679E11C1A208C00B66D7E /* Assets.xcassets */,
 				C9E679E31C1A208C00B66D7E /* LaunchScreen.storyboard */,
@@ -314,9 +314,9 @@
 				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
 				C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */,
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
-				C968CE331C4153EE00AE6316 /* Question.swift in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
+				AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
 				C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */,
@@ -463,6 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PravaProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freeuni.PravaProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,6 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PravaProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freeuni.PravaProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
