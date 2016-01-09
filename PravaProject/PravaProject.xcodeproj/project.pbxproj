@@ -13,6 +13,8 @@
 		C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65E1C4135A500AD5045 /* FMDatabaseQueue.m */; };
 		C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6611C4135A500AD5045 /* FMResultSet.m */; };
 		C95DF6681C4136A600AD5045 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DF6671C4136A600AD5045 /* libsqlite3.tbd */; };
+		C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968CE2F1C4153B500AE6316 /* DBHelper.swift */; };
+		C968CE331C4153EE00AE6316 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968CE321C4153EE00AE6316 /* Question.swift */; };
 		C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */; };
 		C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DC1C1A208C00B66D7E /* ViewController.swift */; };
 		C9E679E01C1A208C00B66D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E679DE1C1A208C00B66D7E /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		C95DF6601C4135A500AD5045 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		C95DF6611C4135A500AD5045 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		C95DF6671C4136A600AD5045 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C968CE2F1C4153B500AE6316 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBHelper.swift; path = PravaProject/DBHelper.swift; sourceTree = "<group>"; };
+		C968CE321C4153EE00AE6316 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		C9E679D71C1A208C00B66D7E /* PravaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PravaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E679DC1C1A208C00B66D7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,9 +117,19 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
+		C968CE311C4153D600AE6316 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C968CE321C4153EE00AE6316 /* Question.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C9E679CE1C1A208C00B66D7E = {
 			isa = PBXGroup;
 			children = (
+				C968CE311C4153D600AE6316 /* Models */,
+				C968CE2F1C4153B500AE6316 /* DBHelper.swift */,
 				C95DF6671C4136A600AD5045 /* libsqlite3.tbd */,
 				C9E679D91C1A208C00B66D7E /* PravaProject */,
 				C9E679EE1C1A208C00B66D7E /* PravaProjectTests */,
@@ -300,10 +314,12 @@
 				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
 				C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */,
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
+				C968CE331C4153EE00AE6316 /* Question.swift in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
+				C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
