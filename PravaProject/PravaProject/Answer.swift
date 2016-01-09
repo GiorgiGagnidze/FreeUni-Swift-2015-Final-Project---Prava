@@ -14,4 +14,8 @@ public class Answer {
     var answer: String!
     var isTrue: Bool!
     
+    func toString() -> String {
+        return "ID=" + String(ID) + " answer=" + answer + " isTrue=" + String(isTrue)
+    }
+    
 }

@@ -14,4 +14,8 @@ public class Error {
     var question: Question!
     var user: User!
     
+    func toString() -> String{
+        return "ID=" + String(ID) + " question=" + question.toString() + " user=" + user.toString()
+    }
+    
 }

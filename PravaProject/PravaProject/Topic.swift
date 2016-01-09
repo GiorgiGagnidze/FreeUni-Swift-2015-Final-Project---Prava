@@ -14,4 +14,8 @@ public class Topic {
     var ID: Int!
     var topic: String!
     
+    func toString() -> String {
+        return " ID= " + String(ID) + " topic=" + topic
+    }
+    
 }

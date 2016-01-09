@@ -15,4 +15,8 @@ public class HighScore {
     var score: Int!
     var time: Int!
     
+    func toString() -> String {
+        return "ID=" + String(ID) + " User=" + user.toString() + " score=" + String(score) + " time=" + String(time)
+    }
+    
 }

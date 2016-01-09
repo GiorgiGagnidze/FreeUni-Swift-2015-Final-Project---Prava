@@ -15,4 +15,8 @@ public class User {
     var name: String!
     var password: String!
     
+    func toString() -> String {
+        return "ID=" + String(ID) + " Name=" + name + " Password" + password
+    }
+    
 }
