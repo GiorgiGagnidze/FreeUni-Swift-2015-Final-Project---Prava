@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; };
+		C9330AEA1C415A1100E6AFEB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AE91C415A1100E6AFEB /* Error.swift */; };
+		C9330AEC1C415B5000E6AFEB /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AEB1C415B5000E6AFEB /* Answer.swift */; };
+		C9330AEE1C415BAF00E6AFEB /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9330AED1C415BAF00E6AFEB /* HighScore.swift */; };
 		C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6581C4135A500AD5045 /* FMDatabase.m */; };
 		C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */; };
 		C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		AA5CCEBA1C41552500EB41C1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C9330AE91C415A1100E6AFEB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		C9330AEB1C415B5000E6AFEB /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		C9330AED1C415BAF00E6AFEB /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		C95DF6561C4135A300AD5045 /* PravaProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PravaProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		C95DF6571C4135A500AD5045 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		C95DF6581C4135A500AD5045 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -102,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				AA5CCEBA1C41552500EB41C1 /* User.swift */,
+				C9330AE91C415A1100E6AFEB /* Error.swift */,
+				C9330AEB1C415B5000E6AFEB /* Answer.swift */,
+				C9330AED1C415BAF00E6AFEB /* HighScore.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,9 +325,12 @@
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
+				C9330AEC1C415B5000E6AFEB /* Answer.swift in Sources */,
 				AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
+				C9330AEA1C415A1100E6AFEB /* Error.swift in Sources */,
+				C9330AEE1C415BAF00E6AFEB /* HighScore.swift in Sources */,
 				C968CE301C4153B500AE6316 /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
