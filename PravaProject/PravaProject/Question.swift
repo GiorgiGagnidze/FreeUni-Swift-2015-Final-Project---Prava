@@ -14,5 +14,6 @@ public class Question {
     var ID: Int!
     var image: String!
     var topic: Topic!
+    var description: String!
     var answers = [Answer]()
 }

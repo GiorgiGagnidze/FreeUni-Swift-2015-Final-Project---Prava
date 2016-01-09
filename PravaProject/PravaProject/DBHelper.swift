@@ -26,7 +26,7 @@ public class DBHelper : NSObject {
         dispatch_async(queue, {
             
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("Prava.sqlite")
+            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaDb.sqlite")
             self.dbPath = path.description
             print(path.description)
             
@@ -49,7 +49,7 @@ public class DBHelper : NSObject {
         
         addTable("Topics", query: "create table Topics(topicId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, topic text)")
         
-        addTable("Questions", query: "create table Questions(questionId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, image text, topicId INTEGER, FOREIGN KEY(topicId) REFERENCES Topics(topicId))")
+        addTable("Questions", query: "create table Questions(questionId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, image text, description text, topicId INTEGER, FOREIGN KEY(topicId) REFERENCES Topics(topicId))")
         
         addTable("Errors", query: "create table Errors(errorId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, questionId INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId), FOREIGN KEY(questionId) REFERENCES Questions(questionId))")
         
@@ -67,6 +67,7 @@ public class DBHelper : NSObject {
             print("nilia")
         }
         let topic = Topic()
+        topic.ID = 1
         topic.topic = "rand"
         DBHelper.getDBHelper().insertTopic(topic)
         if let topic2 = DBHelper.getDBHelper().selectTopic(100) {
@@ -79,7 +80,20 @@ public class DBHelper : NSObject {
         } else {
             print("nilia")
         }
-        
+        let question = Question()
+        question.description = "question1"
+        question.image = "image1"
+        question.topic = topic
+        insertQuestion(question)
+        var questions = selectQuestions()
+        for (_, element) in questions.enumerate() {
+            print("for 1: " + element.description)
+        }
+        insertQuestion(question)
+        var questions2 = selectQuestions(question.topic.ID)
+        for (_, element) in questions2.enumerate() {
+            print("for 2: " + element.description)
+        }
         
     }
     
@@ -170,7 +184,7 @@ public class DBHelper : NSObject {
     }
     
     func insertQuestion(question: Question) {
-        let isInserted = database.executeUpdate("INSERT INTO Questions (image, topicId) VALUES (?, ?)", withArgumentsInArray: [question.image, question.topic.ID])
+        let isInserted = database.executeUpdate("INSERT INTO Questions (description, image, topicId) VALUES (?, ?, ?)", withArgumentsInArray: [question.description ,question.image, question.topic.ID])
         if !isInserted {
             print("insert in question table failed: \(database!.lastErrorMessage())")
             return
@@ -179,6 +193,38 @@ public class DBHelper : NSObject {
         for (_, element) in question.answers.enumerate() {
             insertIntoAnswers(element, questionID: questionId)
         }
+    }
+    
+    func selectQuestions() -> [Question] {
+        var questions = [Question]()
+        if let rs = database.executeQuery("select * from Questions",
+            withArgumentsInArray: nil) {
+            while rs.next() {
+                let question = Question()
+                question.ID = Int(rs.intForColumn("questionId"))
+                question.description =  rs.stringForColumn("description")
+                question.image =  rs.stringForColumn("image")
+                question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                questions.append(question)
+            }
+        }
+        return questions
+    }
+    
+    func selectQuestions(topicId: Int) -> [Question] {
+        var questions = [Question]()
+        if let rs = database.executeQuery("select * from Questions where topicId = " + String(topicId),
+            withArgumentsInArray: nil) {
+                while rs.next() {
+                    let question = Question()
+                    question.ID = Int(rs.intForColumn("questionId"))
+                    question.description =  rs.stringForColumn("description")
+                    question.image =  rs.stringForColumn("image")
+                    question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                    questions.append(question)
+                }
+        }
+        return questions
     }
     
     
