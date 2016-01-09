@@ -231,6 +231,25 @@ public class DBHelper : NSObject {
         return questions
     }
     
+    func selectQuestionByQuestionID(questionID: Int) -> Question? {
+        let question = Question()
+        if let rs = database.executeQuery("select * from Questions where questionID = " + String(questionID),
+            withArgumentsInArray: nil) {
+                var found = false
+                while rs.next() {
+                    found = true
+                    question.ID = Int(rs.intForColumn("questionId"))
+                    question.description =  rs.stringForColumn("description")
+                    question.image =  rs.stringForColumn("image")
+                    question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                    question.answers = selectAnswersByQuestionID(question.ID)
+                }
+                if !found {
+                    return nil
+                }
+        }
+        return question
+    }
     
     func insertHighScore(highScore: HighScore){
         let isInserted = database.executeUpdate("INSERT INTO Highscores (userId, score, time) VALUES (?, ?, ?)", withArgumentsInArray: [highScore.user.ID, highScore.score,highScore.time])
@@ -281,6 +300,24 @@ public class DBHelper : NSObject {
             print("insert 1 table failed: \(database!.lastErrorMessage())")
             return
         }
+    }
+    
+    func selectErrorsWithQuestionsByUserID(userID: Int) -> [Error]{
+        var errors = [Error]()
+        if let user = selectUser(userID){
+            if let rs = database.executeQuery("select * from Errors where userID = " + String(userID), withArgumentsInArray: nil) {
+                while rs.next() {
+                    let error = Error()
+                    error.ID = Int(rs.intForColumn("errorID"))
+                    error.user =  user
+                    let questionID = Int(rs.intForColumn("questionID"))
+                    error.question = selectQuestionByQuestionID(questionID)!
+                    errors.append(error)
+                }
+            }
+        }
+        return errors
+        
     }
     
     func insertIntoAnswers(answer: Answer, questionID: Int){
