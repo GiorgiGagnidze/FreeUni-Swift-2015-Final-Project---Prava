@@ -7,13 +7,3 @@
 //
 
 import Foundation
-
-public class User {
-    
-    var ID: Int!
-    var name: String!
-    var password: String!
-    
-}
-
-

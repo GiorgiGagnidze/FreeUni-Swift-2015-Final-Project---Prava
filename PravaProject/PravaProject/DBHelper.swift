@@ -66,10 +66,6 @@ public class DBHelper : NSObject {
             }
         }
     }
-    
-    
-    
-    
 
     func closeDb(){
         database.close()
