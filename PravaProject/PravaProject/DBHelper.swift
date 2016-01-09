@@ -57,69 +57,99 @@ public class DBHelper : NSObject {
         
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
         
-        var user1 = User()
-        user1.ID = 1
-        user1.name = "nikoloz"
-        user1.password = "pw1"
+        let question1 = Question()
+        question1.ID = 1
+        question1.description = "kitxva1"
+        question1.image = "image1"
+        let topic1 = Topic()
+        topic1.ID = 1
+        topic1.topic = "topic1"
+        insertTopic(topic1)
+        question1.topic = topic1
+        var answers = [Answer]()
+        let answer1 = Answer()
+        answer1.ID = 1
+        answer1.answer = "answer1"
+        answer1.isTrue = false
+        answers.append(answer1)
+        let answer2 = Answer()
+        answer2.ID = 2
+        answer2.answer = "answer2"
+        answer2.isTrue = true
+        answers.append(answer2)
+        question1.answers = answers
         
-        var user2 = User()
-        user2.ID = 2
-        user2.name = "lejava"
-        user2.password = "pw2"
+        let question2 = Question()
+        question2.ID = 2
+        question2.description = "kitxva2"
+        question2.image = "image2"
+        question2.topic = topic1
+        question2.answers = answers
         
-        user1 = insertUser(user1)!
-        user2 = insertUser(user2)!
+        let question3 = Question()
+        question3.ID = 3
+        question3.description = "kitxva3"
+        question3.image = "image3"
+        question3.topic = topic1
+        question3.answers = answers
         
-        let highscore1 = HighScore()
-        highscore1.ID = 1
-        highscore1.score = 8
-        highscore1.time = 2
-        highscore1.user = user1
+        let question4 = Question()
+        question4.ID = 4
+        question4.description = "kitxva4"
+        question4.image = "image4"
+        question4.topic = topic1
+        question4.answers = answers
+
         
-        let highscore2 = HighScore()
-        highscore2.ID = 2
-        highscore2.score = 1
-        highscore2.time = 8
-        highscore2.user = user1
+        let question5 = Question()
+        question5.ID = 5
+        question5.description = "kitxva5"
+        question5.image = "image5"
+        question5.topic = topic1
+        question5.answers = answers
         
-        let highscore3 = HighScore()
-        highscore3.ID = 3
-        highscore3.score = 4
-        highscore3.time = 4
-        highscore3.user = user2
         
-        let highscore4 = HighScore()
-        highscore4.ID = 4
-        highscore4.score = 8
-        highscore4.time = 1
-        highscore4.user = user2
         
-        let highscore5 = HighScore()
-        highscore5.ID = 5
-        highscore5.score = 8
-        highscore5.time = 1
-        highscore5.user = user1
-    
-        let highscore6 = HighScore()
-        highscore6.ID = 6
-        highscore6.score = 4
-        highscore6.time = 5
-        highscore6.user = user2
-        
-        insertHighScore(highscore1)
-        insertHighScore(highscore2)
-        insertHighScore(highscore3)
-        insertHighScore(highscore4)
-        insertHighScore(highscore5)
-        insertHighScore(highscore6)
-        
-        let highscores1 = selectTopNumberHighScores(6)
-        for (_, element) in highscores1.enumerate() {
+        let questions = selectQuestions(4)
+        for (_, element) in questions.enumerate() {
             print(element.toString())
         }
         
-        let highscores2 = selectHighScoresByUserID(user2.ID)
-        for (_, element) in highscores2.enumerate() {
+        print("----");
+        
+        let questions2 = selectQuestions(topic1.ID, limitNumber: 3)
+        for (_, element) in questions2.enumerate() {
+            print(element.toString())
+        }
+        
+        let error1 = Error()
+        error1.ID = 1
+        error1.question = question1
+        error1.user = selectUser(1)
+        
+        let error2 = Error()
+        error2.ID = 2
+        error2.question = question4
+        error2.user = selectUser(1)
+        
+        let error3 = Error()
+        error3.ID = 3
+        error3.question = question2
+        error3.user = selectUser(2)
+        
+        let error4 = Error()
+        error4.ID = 4
+        error4.question = question4
+        error4.user = selectUser(1)
+        
+        insertIntoErrors(error1)
+        insertIntoErrors(error2)
+        insertIntoErrors(error3)
+        insertIntoErrors(error4)
+        
+        
+        let errors = selectErrorsWithQuestionsByUserID(1)
+        for (_, element) in errors.enumerate() {
             print(element.toString())
         }
     }
