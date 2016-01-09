@@ -58,11 +58,28 @@ public class DBHelper : NSObject {
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
         
         let user = User()
-        user.name = "niko"
-        user.password = "pw"
+        user.name = "qada"
+        user.password = "qew"
         DBHelper.getDBHelper().insertUser(user)
-        let user2 = DBHelper.getDBHelper().selectUser(1)
-        print(user2.name + " " + user2.password + " " + String(user2.ID))
+        if let user2 = DBHelper.getDBHelper().selectUser(15){
+            print(user2.name + " " + user2.password + " " + String(user2.ID))
+        } else {
+            print("nilia")
+        }
+        let topic = Topic()
+        topic.topic = "rand"
+        DBHelper.getDBHelper().insertTopic(topic)
+        if let topic2 = DBHelper.getDBHelper().selectTopic(100) {
+            print(topic2.topic + " " + String(topic2.ID))
+        } else {
+            print("nillia esec")
+        }
+        if let user3 = DBHelper.getDBHelper().selectUser(user.name, password: user.password) {
+            print(user3.name + " " + user3.password + " " + String(user3.ID))
+        } else {
+            print("nilia")
+        }
+        
         
     }
     
@@ -84,20 +101,86 @@ public class DBHelper : NSObject {
         // todo let userID =  Int(database.lastInsertRowId())
     }
     
-    func selectUser(userId: Int) -> User
+    func selectUser(userId: Int) -> User?
     {
         let user = User()
         if let rs = database.executeQuery("select * from Users where userId = " + String(userId),
             withArgumentsInArray: nil) {
-            while rs.next() {
-                user.ID = Int(rs.intForColumn("userId"))
-                user.name =  rs.stringForColumn("name")
-                user.password =  rs.stringForColumn("password")
-            }
-            
+                var found = false
+                while rs.next() {
+                    found = true
+                    user.ID = Int(rs.intForColumn("userId"))
+                    user.name =  rs.stringForColumn("name")
+                    user.password =  rs.stringForColumn("password")
+                }
+                if (!found) {
+                    return nil
+                }
         }
         return user
     }
+    
+    
+    func selectUser(name: String, password: String) -> User? {
+        let user = User()
+        if let rs = database.executeQuery("select * from Users where name = \"" + name + "\" AND " +
+            "password = \"" + password + "\"", withArgumentsInArray: nil) {
+                var found = false
+                while rs.next() {
+                    found = true
+                    user.ID = Int(rs.intForColumn("userId"))
+                    user.name =  rs.stringForColumn("name")
+                    user.password =  rs.stringForColumn("password")
+                }
+                if !found {
+                    return nil
+                }
+        }
+        return user
+    }
+    
+    func insertTopic(topic: Topic)
+    {
+        let isInserted = database.executeUpdate("INSERT INTO Topics (topic) VALUES (?)",
+            withArgumentsInArray: [topic.topic])
+        if !isInserted {
+            print("insert in topic table failed: \(database!.lastErrorMessage())")
+            return
+        }
+        // todo let topicID =  Int(database.lastInsertRowId())
+    }
+    
+    func selectTopic(topicId: Int) -> Topic?
+    {
+        let topic = Topic()
+        if let rs = database.executeQuery("select * from Topics where topicId = " + String(topicId),
+            withArgumentsInArray: nil) {
+                var found = false
+                while rs.next() {
+                    found = true
+                    topic.ID = Int(rs.intForColumn("topicId"))
+                    topic.topic =  rs.stringForColumn("topic")
+                }
+                if !found {
+                    return nil
+                }
+                
+        }
+        return topic
+    }
+    
+    func insertQuestion(question: Question) {
+        let isInserted = database.executeUpdate("INSERT INTO Questions (image, topicId) VALUES (?, ?)", withArgumentsInArray: [question.image, question.topic.ID])
+        if !isInserted {
+            print("insert in question table failed: \(database!.lastErrorMessage())")
+            return
+        }
+        let questionId =  Int(database.lastInsertRowId())
+        for (_, element) in question.answers.enumerate() {
+            insertIntoAnswers(element, questionID: questionId)
+        }
+    }
+    
     
     func insertHighScore(highScore: HighScore){
         let isInserted = database.executeUpdate("INSERT INTO Highscores (userId, score, time) VALUES (?, ?, ?)", withArgumentsInArray: [highScore.user.ID, highScore.score,highScore.time])
@@ -108,18 +191,18 @@ public class DBHelper : NSObject {
     }
     
     func selectHighScoresByUserID(userID: Int) -> [HighScore] {
-        let user = selectUser(userID)
         var highScores = [HighScore]()
-        if let rs = database.executeQuery("select * from Highscores where userID = " + String(userID), withArgumentsInArray: nil) {
-            while rs.next() {
-                let highScore = HighScore()
-                highScore.ID = Int(rs.intForColumn("highscoreId"))
-                highScore.user =  user
-                highScore.score =  Int(rs.intForColumn("score"))
-                highScore.time =  Int(rs.intForColumn("time"))
-                highScores.append(highScore)
+        if let user = selectUser(userID){
+            if let rs = database.executeQuery("select * from Highscores where userID = " + String(userID), withArgumentsInArray: nil) {
+                while rs.next() {
+                    let highScore = HighScore()
+                    highScore.ID = Int(rs.intForColumn("highscoreId"))
+                    highScore.user =  user
+                    highScore.score =  Int(rs.intForColumn("score"))
+                    highScore.time =  Int(rs.intForColumn("time"))
+                    highScores.append(highScore)
+                }
             }
-            
         }
         return highScores
     }
@@ -131,7 +214,7 @@ public class DBHelper : NSObject {
                 let highScore = HighScore()
                 highScore.ID = Int(rs.intForColumn("highscoreId"))
                 let userID = Int(rs.intForColumn("userID"))
-                highScore.user = selectUser(userID)
+                highScore.user = selectUser(userID)!
                 highScore.score =  Int(rs.intForColumn("score"))
                 highScore.time =  Int(rs.intForColumn("time"))
                 highScores.append(highScore)
@@ -141,7 +224,7 @@ public class DBHelper : NSObject {
         return highScores
     }
     
-   
+    
     func insertIntoErrors(error: Error){
         let isInserted = database.executeUpdate("INSERT INTO Errors (userId, questionId) VALUES (?, ?)", withArgumentsInArray: [error.user.ID, error.question.ID])
         if !isInserted {
@@ -171,7 +254,6 @@ public class DBHelper : NSObject {
         }
         return answers
     }
-    
     
     func closeDb(){
         database!.close()
