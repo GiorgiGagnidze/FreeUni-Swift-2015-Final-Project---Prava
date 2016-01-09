@@ -98,7 +98,81 @@ public class DBHelper : NSObject {
         }
         return user
     }
-
+    
+    func insertHighScore(highScore: HighScore){
+        let isInserted = database.executeUpdate("INSERT INTO Highscores (userId, score, time) VALUES (?, ?, ?)", withArgumentsInArray: [highScore.user.ID, highScore.score,highScore.time])
+        if !isInserted {
+            print("insert 1 table failed: \(database!.lastErrorMessage())")
+            return
+        }
+    }
+    
+    func selectHighScoresByUserID(userID: Int) -> [HighScore] {
+        let user = selectUser(userID)
+        var highScores = [HighScore]()
+        if let rs = database.executeQuery("select * from Highscores where userID = " + String(userID), withArgumentsInArray: nil) {
+            while rs.next() {
+                let highScore = HighScore()
+                highScore.ID = Int(rs.intForColumn("highscoreId"))
+                highScore.user =  user
+                highScore.score =  Int(rs.intForColumn("score"))
+                highScore.time =  Int(rs.intForColumn("time"))
+                highScores.append(highScore)
+            }
+            
+        }
+        return highScores
+    }
+    
+    func selectTopNumberHighScores(number: Int) -> [HighScore] {
+        var highScores = [HighScore]()
+        if let rs = database.executeQuery("select * from Highscores order by score desc,time asc limit " + String(number), withArgumentsInArray: nil) {
+            while rs.next() {
+                let highScore = HighScore()
+                highScore.ID = Int(rs.intForColumn("highscoreId"))
+                let userID = Int(rs.intForColumn("userID"))
+                highScore.user = selectUser(userID)
+                highScore.score =  Int(rs.intForColumn("score"))
+                highScore.time =  Int(rs.intForColumn("time"))
+                highScores.append(highScore)
+            }
+            
+        }
+        return highScores
+    }
+    
+   
+    func insertIntoErrors(error: Error){
+        let isInserted = database.executeUpdate("INSERT INTO Errors (userId, questionId) VALUES (?, ?)", withArgumentsInArray: [error.user.ID, error.question.ID])
+        if !isInserted {
+            print("insert 1 table failed: \(database!.lastErrorMessage())")
+            return
+        }
+    }
+    
+    func insertIntoAnswers(answer: Answer, questionID: Int){
+        let isInserted = database.executeUpdate("INSERT INTO Answers (questionId, answer, isTrue) VALUES (?, ?, ?)", withArgumentsInArray: [questionID,answer.answer,answer.isTrue])
+        if !isInserted {
+            print("insert 1 table failed: \(database!.lastErrorMessage())")
+            return
+        }
+    }
+    
+    func selectAnswersByQuestionID(questionID: Int) -> [Answer]{
+        var answers = [Answer]()
+        if let rs = database.executeQuery("select * from Answers where questionID = " + String(questionID), withArgumentsInArray: nil) {
+            while rs.next() {
+                let answer = Answer()
+                answer.ID = Int(rs.intForColumn("answerID"))
+                answer.answer =  rs.stringForColumn("answer")
+                answer.isTrue =  Int(rs.intForColumn("isTrue")) == 1
+                answers.append(answer)
+            }
+        }
+        return answers
+    }
+    
+    
     func closeDb(){
         database!.close()
     }
