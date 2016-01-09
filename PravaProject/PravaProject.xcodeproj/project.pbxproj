@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6581C4135A500AD5045 /* FMDatabase.m */; };
+		C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */; };
+		C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */; };
+		C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF65E1C4135A500AD5045 /* FMDatabaseQueue.m */; };
+		C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DF6611C4135A500AD5045 /* FMResultSet.m */; };
+		C95DF6681C4136A600AD5045 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C95DF6671C4136A600AD5045 /* libsqlite3.tbd */; };
 		C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */; };
 		C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E679DC1C1A208C00B66D7E /* ViewController.swift */; };
 		C9E679E01C1A208C00B66D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E679DE1C1A208C00B66D7E /* Main.storyboard */; };
@@ -34,6 +40,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C95DF6561C4135A300AD5045 /* PravaProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PravaProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		C95DF6571C4135A500AD5045 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		C95DF6581C4135A500AD5045 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		C95DF6591C4135A500AD5045 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		C95DF65B1C4135A500AD5045 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		C95DF65D1C4135A500AD5045 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		C95DF65E1C4135A500AD5045 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		C95DF65F1C4135A500AD5045 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		C95DF6601C4135A500AD5045 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		C95DF6611C4135A500AD5045 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		C95DF6671C4136A600AD5045 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C9E679D71C1A208C00B66D7E /* PravaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PravaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E679DC1C1A208C00B66D7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95DF6681C4136A600AD5045 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +94,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C95DF6551C41355D00AD5045 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				C95DF6571C4135A500AD5045 /* FMDatabase.h */,
+				C95DF6581C4135A500AD5045 /* FMDatabase.m */,
+				C95DF6591C4135A500AD5045 /* FMDatabaseAdditions.h */,
+				C95DF65A1C4135A500AD5045 /* FMDatabaseAdditions.m */,
+				C95DF65B1C4135A500AD5045 /* FMDatabasePool.h */,
+				C95DF65C1C4135A500AD5045 /* FMDatabasePool.m */,
+				C95DF65D1C4135A500AD5045 /* FMDatabaseQueue.h */,
+				C95DF65E1C4135A500AD5045 /* FMDatabaseQueue.m */,
+				C95DF65F1C4135A500AD5045 /* FMDB.h */,
+				C95DF6601C4135A500AD5045 /* FMResultSet.h */,
+				C95DF6611C4135A500AD5045 /* FMResultSet.m */,
+				C95DF6561C4135A300AD5045 /* PravaProject-Bridging-Header.h */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 		C9E679CE1C1A208C00B66D7E = {
 			isa = PBXGroup;
 			children = (
+				C95DF6671C4136A600AD5045 /* libsqlite3.tbd */,
 				C9E679D91C1A208C00B66D7E /* PravaProject */,
 				C9E679EE1C1A208C00B66D7E /* PravaProjectTests */,
 				C9E679F91C1A208C00B66D7E /* PravaProjectUITests */,
@@ -97,6 +137,7 @@
 		C9E679D91C1A208C00B66D7E /* PravaProject */ = {
 			isa = PBXGroup;
 			children = (
+				C95DF6551C41355D00AD5045 /* FMDB */,
 				C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */,
 				C9E679DC1C1A208C00B66D7E /* ViewController.swift */,
 				C9E679DE1C1A208C00B66D7E /* Main.storyboard */,
@@ -256,8 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
 				C9E679DD1C1A208C00B66D7E /* ViewController.swift in Sources */,
+				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
+				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
+				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
+				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +445,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PravaProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freeuni.PravaProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PravaProject/PravaProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -410,10 +459,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PravaProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freeuni.PravaProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PravaProject/PravaProject-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -484,6 +535,7 @@
 				C9E67A011C1A208C00B66D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9E67A021C1A208C00B66D7E /* Build configuration list for PBXNativeTarget "PravaProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +544,7 @@
 				C9E67A041C1A208C00B66D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9E67A051C1A208C00B66D7E /* Build configuration list for PBXNativeTarget "PravaProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +553,7 @@
 				C9E67A071C1A208C00B66D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
