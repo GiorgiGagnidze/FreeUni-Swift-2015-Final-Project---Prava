@@ -10,7 +10,7 @@ import Foundation
 
 public class Error {
     
-    var id: Int!
+    var ID: Int!
     var question: Question!
     var user: User!
     

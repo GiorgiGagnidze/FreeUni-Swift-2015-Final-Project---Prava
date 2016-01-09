@@ -57,6 +57,13 @@ public class DBHelper : NSObject {
         
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
         
+        let user = User()
+        user.name = "niko"
+        user.password = "pw"
+        DBHelper.getDBHelper().insertUser(user)
+        let user2 = DBHelper.getDBHelper().selectUser(1)
+        print(user2.name + " " + user2.password + " " + String(user2.ID))
+        
     }
     
     private func addTable(tableName: String,query: String){
@@ -66,8 +73,33 @@ public class DBHelper : NSObject {
             }
         }
     }
+    
+    func insertUser(user: User)
+    {
+        let isInserted = database.executeUpdate("INSERT INTO Users (name, password) VALUES (?, ?)", withArgumentsInArray: [user.name, user.password])
+        if !isInserted {
+            print("insert 1 table failed: \(database!.lastErrorMessage())")
+            return
+        }
+        // todo let userID =  Int(database.lastInsertRowId())
+    }
+    
+    func selectUser(userId: Int) -> User
+    {
+        let user = User()
+        if let rs = database.executeQuery("select * from Users where userId = " + String(userId),
+            withArgumentsInArray: nil) {
+            while rs.next() {
+                user.ID = Int(rs.intForColumn("userId"))
+                user.name =  rs.stringForColumn("name")
+                user.password =  rs.stringForColumn("password")
+            }
+            
+        }
+        return user
+    }
 
     func closeDb(){
-        database.close()
+        database!.close()
     }
 }

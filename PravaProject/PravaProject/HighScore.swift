@@ -10,7 +10,7 @@ import Foundation
 
 public class HighScore {
     
-    var id: Int!
+    var ID: Int!
     var user: User!
     var score: Int!
     var time: Int!

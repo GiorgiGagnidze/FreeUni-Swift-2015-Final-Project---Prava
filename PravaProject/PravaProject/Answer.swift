@@ -10,7 +10,7 @@ import Foundation
 
 public class Answer {
     
-    var id: Int!
+    var ID: Int!
     var answer: String!
     var isTrue: Bool!
     
