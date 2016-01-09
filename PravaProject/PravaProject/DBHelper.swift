@@ -56,45 +56,6 @@ public class DBHelper : NSObject {
         addTable("Answers", query: "create table Answers(answerId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, questionId INTEGER, answer text, isTrue INTEGER, FOREIGN KEY(questionId) REFERENCES Questions(questionId))")
         
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
-        
-        let user = User()
-        user.name = "qada"
-        user.password = "qew"
-        DBHelper.getDBHelper().insertUser(user)
-        if let user2 = DBHelper.getDBHelper().selectUser(15){
-            print(user2.name + " " + user2.password + " " + String(user2.ID))
-        } else {
-            print("nilia")
-        }
-        let topic = Topic()
-        topic.ID = 1
-        topic.topic = "rand"
-        DBHelper.getDBHelper().insertTopic(topic)
-        if let topic2 = DBHelper.getDBHelper().selectTopic(100) {
-            print(topic2.topic + " " + String(topic2.ID))
-        } else {
-            print("nillia esec")
-        }
-        if let user3 = DBHelper.getDBHelper().selectUser(user.name, password: user.password) {
-            print(user3.name + " " + user3.password + " " + String(user3.ID))
-        } else {
-            print("nilia")
-        }
-        let question = Question()
-        question.description = "question1"
-        question.image = "image1"
-        question.topic = topic
-        insertQuestion(question)
-        let questions = selectQuestions()
-        for (_, element) in questions.enumerate() {
-            print("for 1: " + element.description)
-        }
-        insertQuestion(question)
-        let questions2 = selectQuestions(question.topic.ID)
-        for (_, element) in questions2.enumerate() {
-            print("for 2: " + element.description)
-        }
-        
     }
     
     private func addTable(tableName: String,query: String){
@@ -204,9 +165,10 @@ public class DBHelper : NSObject {
         }
     }
     
-    func selectQuestions() -> [Question] {
+    
+    func selectQuestions(limitNumber: Int) -> [Question] {
         var questions = [Question]()
-        if let rs = database.executeQuery("select * from Questions",
+        if let rs = database.executeQuery("SELECT * FROM questions ORDER BY RANDOM() LIMIT " + String(limitNumber),
             withArgumentsInArray: nil) {
             while rs.next() {
                 let question = Question()
@@ -222,9 +184,10 @@ public class DBHelper : NSObject {
         return questions
     }
     
-    func selectQuestions(topicId: Int) -> [Question] {
+    func selectQuestions(topicId: Int, limitNumber: Int) -> [Question] {
         var questions = [Question]()
-        if let rs = database.executeQuery("select * from Questions where topicId = " + String(topicId),
+        if let rs = database.executeQuery("select * from Questions where topicId = " + String(topicId)
+            + " ORDER BY RANDOM() LIMIT " + String(limitNumber),
             withArgumentsInArray: nil) {
                 while rs.next() {
                     let question = Question()
