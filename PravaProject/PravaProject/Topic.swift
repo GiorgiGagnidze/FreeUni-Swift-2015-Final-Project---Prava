@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Topic.swift
 //  PravaProject
 //
 //  Created by Sandro on 1/9/16.
@@ -9,10 +9,9 @@
 import Foundation
 
 
-public class User {
-    
+public class Topic {
+
     var ID: Int!
-    var name: String!
-    var password: String!
+    var topic: String!
     
 }
