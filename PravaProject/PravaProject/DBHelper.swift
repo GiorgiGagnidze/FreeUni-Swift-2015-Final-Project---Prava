@@ -27,7 +27,7 @@ public class DBHelper : NSObject {
         dispatch_async(queue, {
             
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest1.sqlite")
+            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest2.sqlite")
             self.dbPath = path.description
             print(path.description)
             
