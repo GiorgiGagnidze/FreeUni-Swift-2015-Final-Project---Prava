@@ -7,6 +7,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="HGx-VS-BXa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUD-L5-WdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="01E-iG-OFZ" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Dwz-mu-HDW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -21,13 +22,13 @@
                         <segue destination="QtF-hP-S8d" kind="relationship" relationship="viewControllers" id="j6G-Xa-A6I"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QUD-L5-WdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-298" y="747"/>
+            <point key="canvasLocation" x="-570" y="-1313"/>
         </scene>
         <!--Topics-->
         <scene sceneID="LaS-Sv-XFF">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfk-VP-3iF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="hPL-Wk-hpn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Topics" id="bUM-n2-0ke"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SbA-6w-FbY">
@@ -35,14 +36,49 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="XeP-LQ-PAV" kind="relationship" relationship="rootViewController" id="81V-xE-OKQ"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hfk-VP-3iF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="842"/>
+            <point key="canvasLocation" x="-570" y="282"/>
+        </scene>
+        <!--Topics-->
+        <scene sceneID="ryo-ts-krc">
+            <objects>
+                <tableViewController id="XeP-LQ-PAV" customClass="TopicsController" customModule="PravaProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nY0-sV-FoM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uwg-u0-1P0">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uwg-u0-1P0" id="Lf0-z8-Izw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XeP-LQ-PAV" id="cAS-jH-fHO"/>
+                            <outlet property="delegate" destination="XeP-LQ-PAV" id="2XT-rc-8vu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Topics" id="WCx-D3-3Hd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AB3-kY-Wvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="170" y="288"/>
         </scene>
         <!--Highscores-->
         <scene sceneID="bgh-pJ-5WF">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFn-hZ-d0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="QtF-hP-S8d" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Highscores" id="cAa-aX-GZV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iau-FQ-bxq">
@@ -50,14 +86,49 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="njI-Tl-O8b" kind="relationship" relationship="rootViewController" id="FVe-7X-NI0"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SFn-hZ-d0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="107"/>
+            <point key="canvasLocation" x="-570" y="-517"/>
+        </scene>
+        <!--Highscores-->
+        <scene sceneID="OZK-T9-wA9">
+            <objects>
+                <tableViewController id="njI-Tl-O8b" customClass="HighScoresController" customModule="PravaProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="grm-2b-4Gd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="snP-Ld-6al">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="snP-Ld-6al" id="ewY-e5-apc">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="njI-Tl-O8b" id="Ej4-CO-aWf"/>
+                            <outlet property="delegate" destination="njI-Tl-O8b" id="kZu-gl-UfQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Highscores" id="A30-Hy-dv1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z20-3N-3sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="170" y="-530"/>
         </scene>
         <!--Home-->
         <scene sceneID="s1M-II-Piv">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xeh-Bo-5Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="6EZ-hh-Nvp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="MtB-JI-vao"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qmi-sY-7DR">
@@ -65,25 +136,109 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Ubc-nO-XkX" kind="relationship" relationship="rootViewController" id="bhB-rm-wBe"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xeh-Bo-5Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="1597"/>
+            <point key="canvasLocation" x="-580" y="1751"/>
         </scene>
-        <!--Errors-->
+        <!--Home-->
+        <scene sceneID="8kS-FK-Vhq">
+            <objects>
+                <viewController id="Ubc-nO-XkX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3p-rL-xKi"/>
+                        <viewControllerLayoutGuide type="bottom" id="n5z-HT-RQ9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wau-ke-NWD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleipurvegur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lvJ-2Z-3np">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-1g-Qdc">
+                                <rect key="frame" x="208" y="264" width="184" height="86"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="184" id="frG-7I-2gf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Start Test"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="leading" secondItem="wau-ke-NWD" secondAttribute="leading" id="7P3-4q-K1I"/>
+                            <constraint firstAttribute="trailing" secondItem="lvJ-2Z-3np" secondAttribute="trailing" id="Myu-RK-gTZ"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" constant="200" id="WOh-gA-SnG"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerX" secondItem="lvJ-2Z-3np" secondAttribute="centerX" id="btc-i9-nGO"/>
+                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" id="iSI-68-9S9"/>
+                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="bottom" secondItem="n5z-HT-RQ9" secondAttribute="top" id="smC-0Q-rvR"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerY" secondItem="lvJ-2Z-3np" secondAttribute="centerY" id="tj9-tU-QJz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="wHU-EG-sXx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="flp-8h-Ds8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="1751"/>
+        </scene>
+        <!--Mistakes-->
         <scene sceneID="Oix-wd-Xhb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccu-3U-1LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="ySo-fu-Dze" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Errors" id="0As-6W-Dq5"/>
+                    <tabBarItem key="tabBarItem" title="Mistakes" id="0As-6W-Dq5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vv6-Jq-wHI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="S5T-lb-HcB" kind="relationship" relationship="rootViewController" id="8ch-UD-k9V"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ccu-3U-1LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="1546"/>
+            <point key="canvasLocation" x="-580" y="1009"/>
+        </scene>
+        <!--Mistakes-->
+        <scene sceneID="g4a-hW-lvo">
+            <objects>
+                <tableViewController id="S5T-lb-HcB" customClass="MistakesController" customModule="PravaProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bxb-Kj-0Lk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dL9-63-lnA">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dL9-63-lnA" id="NrR-FZ-7Uq">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="S5T-lb-HcB" id="RBo-OR-jgc"/>
+                            <outlet property="delegate" destination="S5T-lb-HcB" id="GhD-U0-7fv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Mistakes" id="gJQ-0t-uAH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vuj-oY-csl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="1009"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sleipurvegur.jpg" width="1024" height="896"/>
+    </resources>
 </document>

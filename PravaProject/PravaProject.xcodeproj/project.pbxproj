@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		156B57801C42B66900258EF9 /* HighScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B577F1C42B66900258EF9 /* HighScoresController.swift */; };
+		156B57821C42B6AD00258EF9 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57811C42B6AD00258EF9 /* GameController.swift */; };
+		156B57841C42B6C700258EF9 /* TopicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57831C42B6C700258EF9 /* TopicsController.swift */; };
+		156B57861C42B6F700258EF9 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57851C42B6F700258EF9 /* QuestionController.swift */; };
+		156B57881C42B71B00258EF9 /* MistakesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57871C42B71B00258EF9 /* MistakesController.swift */; };
+		156B578A1C42B77900258EF9 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57891C42B77900258EF9 /* ScoreCell.swift */; };
+		156B578C1C42B79500258EF9 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B578B1C42B79500258EF9 /* ImageCell.swift */; };
+		156B578E1C42B93400258EF9 /* sleipurvegur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 156B578D1C42B93400258EF9 /* sleipurvegur.jpg */; };
 		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; };
 		AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC01C415FCC00EB41C1 /* Question.swift */; };
 		AA5CCEC31C415FFA00EB41C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC21C415FFA00EB41C1 /* Topic.swift */; };
@@ -46,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		156B577F1C42B66900258EF9 /* HighScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresController.swift; sourceTree = "<group>"; };
+		156B57811C42B6AD00258EF9 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		156B57831C42B6C700258EF9 /* TopicsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsController.swift; sourceTree = "<group>"; };
+		156B57851C42B6F700258EF9 /* QuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
+		156B57871C42B71B00258EF9 /* MistakesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MistakesController.swift; sourceTree = "<group>"; };
+		156B57891C42B77900258EF9 /* ScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
+		156B578B1C42B79500258EF9 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		156B578D1C42B93400258EF9 /* sleipurvegur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sleipurvegur.jpg; sourceTree = "<group>"; };
 		AA5CCEBA1C41552500EB41C1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA5CCEC01C415FCC00EB41C1 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		AA5CCEC21C415FFA00EB41C1 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -106,6 +122,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		156B577D1C42B24200258EF9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				156B577F1C42B66900258EF9 /* HighScoresController.swift */,
+				156B57811C42B6AD00258EF9 /* GameController.swift */,
+				156B57831C42B6C700258EF9 /* TopicsController.swift */,
+				156B57851C42B6F700258EF9 /* QuestionController.swift */,
+				156B57871C42B71B00258EF9 /* MistakesController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		156B577E1C42B26800258EF9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				156B57891C42B77900258EF9 /* ScoreCell.swift */,
+				156B578B1C42B79500258EF9 /* ImageCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		AA5CCEB91C4154E700EB41C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +199,8 @@
 		C9E679D91C1A208C00B66D7E /* PravaProject */ = {
 			isa = PBXGroup;
 			children = (
+				156B577E1C42B26800258EF9 /* Cells */,
+				156B577D1C42B24200258EF9 /* ViewControllers */,
 				AA5CCEB91C4154E700EB41C1 /* Model */,
 				C95DF6551C41355D00AD5045 /* FMDB */,
 				C9E679DA1C1A208C00B66D7E /* AppDelegate.swift */,
@@ -169,6 +208,7 @@
 				C9E679DE1C1A208C00B66D7E /* Main.storyboard */,
 				C9E679E11C1A208C00B66D7E /* Assets.xcassets */,
 				C9E679E31C1A208C00B66D7E /* LaunchScreen.storyboard */,
+				156B578D1C42B93400258EF9 /* sleipurvegur.jpg */,
 				C9E679E61C1A208C00B66D7E /* Info.plist */,
 			);
 			path = PravaProject;
@@ -296,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				156B578E1C42B93400258EF9 /* sleipurvegur.jpg in Resources */,
 				C9E679E51C1A208C00B66D7E /* LaunchScreen.storyboard in Resources */,
 				C9E679E21C1A208C00B66D7E /* Assets.xcassets in Resources */,
 				C9E679E01C1A208C00B66D7E /* Main.storyboard in Resources */,
@@ -324,11 +365,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95DF6621C4135A500AD5045 /* FMDatabase.m in Sources */,
+				156B57821C42B6AD00258EF9 /* GameController.swift in Sources */,
 				C95DF6661C4135A500AD5045 /* FMResultSet.m in Sources */,
+				156B578A1C42B77900258EF9 /* ScoreCell.swift in Sources */,
+				156B57861C42B6F700258EF9 /* QuestionController.swift in Sources */,
 				C95DF6641C4135A500AD5045 /* FMDatabasePool.m in Sources */,
 				C9E679DB1C1A208C00B66D7E /* AppDelegate.swift in Sources */,
 				C9330AEC1C415B5000E6AFEB /* Answer.swift in Sources */,
 				AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */,
+				156B578C1C42B79500258EF9 /* ImageCell.swift in Sources */,
+				156B57841C42B6C700258EF9 /* TopicsController.swift in Sources */,
+				156B57801C42B66900258EF9 /* HighScoresController.swift in Sources */,
+				156B57881C42B71B00258EF9 /* MistakesController.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */,
 				C95DF6651C4135A500AD5045 /* FMDatabaseQueue.m in Sources */,
