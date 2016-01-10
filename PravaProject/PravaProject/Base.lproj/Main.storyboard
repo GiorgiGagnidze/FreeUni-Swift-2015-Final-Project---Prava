@@ -29,7 +29,7 @@
         <scene sceneID="LaS-Sv-XFF">
             <objects>
                 <navigationController id="hPL-Wk-hpn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Topics" id="bUM-n2-0ke"/>
+                    <tabBarItem key="tabBarItem" title="Topics" image="topic.png" id="bUM-n2-0ke"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SbA-6w-FbY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -82,7 +82,7 @@
         <scene sceneID="bgh-pJ-5WF">
             <objects>
                 <navigationController id="QtF-hP-S8d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Highscores" id="cAa-aX-GZV"/>
+                    <tabBarItem key="tabBarItem" title="Highscores" image="score.png" id="cAa-aX-GZV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iau-FQ-bxq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -191,7 +191,7 @@
         <scene sceneID="s1M-II-Piv">
             <objects>
                 <navigationController id="6EZ-hh-Nvp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="MtB-JI-vao"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home-icon.png" id="MtB-JI-vao"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qmi-sY-7DR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -217,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleipurvegur.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lvJ-2Z-3np">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="lvJ-2Z-3np">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                             </imageView>
@@ -228,7 +228,9 @@
                                     <constraint firstAttribute="width" constant="184" id="frG-7I-2gf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="Start Test"/>
+                                <state key="normal" title="Start Test">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="MzI-g1-3tY" kind="show" id="52m-sg-rq6"/>
                                 </connections>
@@ -420,7 +422,7 @@
         <scene sceneID="Oix-wd-Xhb">
             <objects>
                 <navigationController id="ySo-fu-Dze" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mistakes" id="0As-6W-Dq5"/>
+                    <tabBarItem key="tabBarItem" title="Mistakes" image="mistake.png" id="0As-6W-Dq5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vv6-Jq-wHI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -471,9 +473,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sleipurvegur.jpg" width="1024" height="896"/>
+        <image name="Home-icon.png" width="28" height="28"/>
+        <image name="background.png" width="281" height="450"/>
+        <image name="mistake.png" width="28" height="28"/>
+        <image name="score.png" width="34" height="34"/>
+        <image name="topic.png" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xev-Vf-SDi"/>
+        <segue reference="52m-sg-rq6"/>
     </inferredMetricsTieBreakers>
 </document>
