@@ -14,6 +14,7 @@ public class DBHelper : NSObject {
     static func getDBHelper() -> DBHelper{
         if(db == nil){
             db = DBHelper()
+            
         }
         return db
     }
@@ -26,7 +27,7 @@ public class DBHelper : NSObject {
         dispatch_async(queue, {
             
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaDatab.sqlite")
+            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest1.sqlite")
             self.dbPath = path.description
             print(path.description)
             
@@ -40,11 +41,15 @@ public class DBHelper : NSObject {
             }
             self.addTables()
         })
-        
     }
     
     
     private func addTables(){
+        var fillDBWithData = true
+        if(self.database.tableExists("Users")) {
+            fillDBWithData = false
+        }
+        
         addTable("Users", query: "create table Users(userId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, name text, password text)")
         
         addTable("Topics", query: "create table Topics(topicId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, topic text)")
@@ -56,9 +61,20 @@ public class DBHelper : NSObject {
         addTable("Answers", query: "create table Answers(answerId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, questionId INTEGER, answer text, isTrue INTEGER, FOREIGN KEY(questionId) REFERENCES Questions(questionId))")
         
         addTable("Highscores", query: "create table Highscores(highscoreId  INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, userId INTEGER, score INTEGER, time INTEGER, FOREIGN KEY(userId) REFERENCES Users(userId))")
+        
+        if(fillDBWithData){
+            DataHelper.insertData()
+        }
+        
+        
+        //        let bla = selectQuestions(20)
+        //        for (_,element) in bla.enumerate() {
+        //            print(element.toString())
+        //        }
+        //        print(bla.count)
     }
     
-    private func addTable(tableName: String,query: String){
+    private func addTable(tableName: String,query: String) {
         if(  !self.database.tableExists(tableName )){
             if !self.database.executeUpdate(query, withArgumentsInArray: nil) {
                 print("create table failed: \(self.database.lastErrorMessage())")
@@ -168,7 +184,7 @@ public class DBHelper : NSObject {
         }
         return topics
     }
-
+    
     
     func insertQuestion(question: Question) {
         let isInserted = database.executeUpdate("INSERT INTO Questions (description, image, topicId) VALUES (?, ?, ?)", withArgumentsInArray: [question.description ,question.image, question.topic.ID])
@@ -187,16 +203,16 @@ public class DBHelper : NSObject {
         var questions = [Question]()
         if let rs = database.executeQuery("SELECT * FROM questions ORDER BY RANDOM() LIMIT " + String(limitNumber),
             withArgumentsInArray: nil) {
-            while rs.next() {
-                let question = Question()
-                question.ID = Int(rs.intForColumn("questionId"))
-                question.description =  rs.stringForColumn("description")
-                question.image =  rs.stringForColumn("image")
-                question.topic = selectTopic(Int(rs.intForColumn("topicId")))
-                question.answers = selectAnswersByQuestionID(question.ID)
-
-                questions.append(question)
-            }
+                while rs.next() {
+                    let question = Question()
+                    question.ID = Int(rs.intForColumn("questionId"))
+                    question.description =  rs.stringForColumn("description")
+                    question.image =  rs.stringForColumn("image")
+                    question.topic = selectTopic(Int(rs.intForColumn("topicId")))
+                    question.answers = selectAnswersByQuestionID(question.ID)
+                    
+                    questions.append(question)
+                }
         }
         return questions
     }
@@ -324,7 +340,7 @@ public class DBHelper : NSObject {
                 let answer = Answer()
                 answer.ID = Int(rs.intForColumn("answerID"))
                 answer.answer =  rs.stringForColumn("answer")
-                answer.isTrue =  Int(rs.intForColumn("isTrue")) == 1
+                answer.isTrue =  Int(rs.intForColumn("isTrue"))
                 answers.append(answer)
             }
         }

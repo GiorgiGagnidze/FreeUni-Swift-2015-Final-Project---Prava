@@ -12,7 +12,7 @@ public class Answer {
     
     var ID: Int!
     var answer: String!
-    var isTrue: Bool!
+    var isTrue: Int!
     
     func toString() -> String {
         return "ID=" + String(ID) + " answer=" + answer + " isTrue=" + String(isTrue)
