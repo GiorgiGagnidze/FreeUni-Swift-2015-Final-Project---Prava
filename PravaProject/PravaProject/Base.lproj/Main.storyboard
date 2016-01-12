@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="01E-iG-OFZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="01E-iG-OFZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -208,7 +209,7 @@
         <!--Home-->
         <scene sceneID="8kS-FK-Vhq">
             <objects>
-                <viewController id="Ubc-nO-XkX" sceneMemberID="viewController">
+                <viewController id="Ubc-nO-XkX" customClass="HomeViewController" customModule="PravaProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T3p-rL-xKi"/>
                         <viewControllerLayoutGuide type="bottom" id="n5z-HT-RQ9"/>
@@ -222,17 +223,18 @@
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-1g-Qdc">
-                                <rect key="frame" x="208" y="264" width="184" height="86"/>
+                                <rect key="frame" x="208" y="265" width="184" height="86"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="184" id="frG-7I-2gf"/>
+                                    <constraint firstAttribute="width" constant="184" id="sl6-wl-nTn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Start Test">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="MzI-g1-3tY" kind="show" id="52m-sg-rq6"/>
+                                    <action selector="buttonClicked:" destination="Ubc-nO-XkX" eventType="touchUpInside" id="cC0-v6-aJl"/>
+                                    <segue destination="MzI-g1-3tY" kind="show" identifier="GameSegue" id="52m-sg-rq6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -241,11 +243,11 @@
                         <constraints>
                             <constraint firstItem="lvJ-2Z-3np" firstAttribute="leading" secondItem="wau-ke-NWD" secondAttribute="leading" id="7P3-4q-K1I"/>
                             <constraint firstAttribute="trailing" secondItem="lvJ-2Z-3np" secondAttribute="trailing" id="Myu-RK-gTZ"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" constant="200" id="WOh-gA-SnG"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerX" secondItem="lvJ-2Z-3np" secondAttribute="centerX" id="btc-i9-nGO"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerX" secondItem="lvJ-2Z-3np" secondAttribute="centerX" id="bbN-Ub-Wkc"/>
                             <constraint firstItem="lvJ-2Z-3np" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" id="iSI-68-9S9"/>
+                            <constraint firstItem="n5z-HT-RQ9" firstAttribute="top" secondItem="B0Q-1g-Qdc" secondAttribute="bottom" constant="200" id="rok-ut-RKv"/>
                             <constraint firstItem="lvJ-2Z-3np" firstAttribute="bottom" secondItem="n5z-HT-RQ9" secondAttribute="top" id="smC-0Q-rvR"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerY" secondItem="lvJ-2Z-3np" secondAttribute="centerY" id="tj9-tU-QJz"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerY" secondItem="lvJ-2Z-3np" secondAttribute="centerY" id="uc5-b2-FE1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="wHU-EG-sXx"/>
@@ -344,60 +346,57 @@
         <!--Test-->
         <scene sceneID="jSO-Qr-wAe">
             <objects>
-                <tableViewController id="MzI-g1-3tY" sceneMemberID="viewController">
+                <tableViewController id="MzI-g1-3tY" customClass="GameController" customModule="PravaProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qwQ-2E-3Qz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p6B-UU-KZO">
+                            <rect key="frame" x="0.0" y="64" width="600" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="D8x-0m-3kK">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8x-0m-3kK" id="zkP-eS-rs3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="253" id="jyj-Ul-Jo1" customClass="ImageCell" customModule="PravaProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="253"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="179" id="jyj-Ul-Jo1" customClass="GameCell" customModule="PravaProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="164" width="600" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jyj-Ul-Jo1" id="uzM-PA-vFA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="178"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="30f-Qd-jDq">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="252"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30f-Qd-jDq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="139"/>
                                             <animations/>
                                         </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="top" secondItem="uzM-PA-vFA" secondAttribute="top" id="L8A-vQ-2YU"/>
-                                        <constraint firstAttribute="trailing" secondItem="30f-Qd-jDq" secondAttribute="trailing" id="Uzf-ky-8ph"/>
-                                        <constraint firstAttribute="bottom" secondItem="30f-Qd-jDq" secondAttribute="bottom" id="Y46-h7-JoS"/>
-                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="leading" secondItem="uzM-PA-vFA" secondAttribute="leading" id="m9n-c5-9Bh"/>
+                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="top" secondItem="uzM-PA-vFA" secondAttribute="top" id="JAf-ua-Gjx"/>
+                                        <constraint firstAttribute="trailing" secondItem="30f-Qd-jDq" secondAttribute="trailing" id="gIh-nE-Oew"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="30f-Qd-jDq" secondAttribute="bottom" constant="31" id="q6d-jd-uOE"/>
+                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="leading" secondItem="uzM-PA-vFA" secondAttribute="leading" id="spX-0g-V4e"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="questionImage" destination="30f-Qd-jDq" id="VAY-cv-NMj"/>
+                                    <outlet property="gameImage" destination="30f-Qd-jDq" id="2qF-cy-Ure"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="questionCell" id="dXp-n6-UR2">
-                                <rect key="frame" x="0.0" y="389" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="questionCell" rowHeight="83" id="dXp-n6-UR2">
+                                <rect key="frame" x="0.0" y="343" width="600" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dXp-n6-UR2" id="Ucu-iG-1K5">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="answerCell" id="MVp-s0-ZcI">
-                                <rect key="frame" x="0.0" y="433" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="426" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MVp-s0-ZcI" id="Kvr-am-86U">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -412,11 +411,21 @@
                             <outlet property="delegate" destination="MzI-g1-3tY" id="aQm-Qv-HaV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Test" id="C8s-dw-Y7f"/>
+                    <navigationItem key="navigationItem" title="Test" id="C8s-dw-Y7f">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="zQe-7Z-uEV">
+                            <connections>
+                                <action selector="onNextClick:" destination="MzI-g1-3tY" id="4hn-TJ-0pv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="qwQ-2E-3Qz" id="2wW-JA-ttF"/>
+                        <outlet property="timerLabel" destination="p6B-UU-KZO" id="NUY-E5-t7e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3Q-fu-udU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050" y="1776"/>
+            <point key="canvasLocation" x="754" y="1809"/>
         </scene>
         <!--Mistakes-->
         <scene sceneID="Oix-wd-Xhb">
