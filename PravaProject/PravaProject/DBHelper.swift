@@ -67,11 +67,20 @@ public class DBHelper : NSObject {
         }
         
         
-        //        let bla = selectQuestions(20)
-        //        for (_,element) in bla.enumerate() {
-        //            print(element.toString())
-        //        }
-        //        print(bla.count)
+//        let question1 = Question()
+//        question1.ID = 1
+//        
+//        let user = User()
+//        user.name = "bla"
+//        user.password = "blu"
+//        
+//        let currentUser = selectUser(user.name, password: user.password)
+//        
+//        let error1 = Error()
+//        error1.question = question1
+//        error1.user = currentUser
+//        
+//        insertIntoErrors(error1)
     }
     
     private func addTable(tableName: String,query: String) {
@@ -300,6 +309,18 @@ public class DBHelper : NSObject {
     
     
     func insertIntoErrors(error: Error){
+        if let rs = database.executeQuery("select * from Errors where userID = " + String(error.user.ID)
+            + " and questionID = " + String(error.question.ID), withArgumentsInArray: nil) {
+                var found = false
+                while rs.next() {
+                    found = true
+                }
+                if(found){
+                    print("agar bratva error")
+                    return
+                }
+        }
+        print("chavamate bratva error")
         let isInserted = database.executeUpdate("INSERT INTO Errors (userId, questionId) VALUES (?, ?)", withArgumentsInArray: [error.user.ID, error.question.ID])
         if !isInserted {
             print("insert 1 table failed: \(database!.lastErrorMessage())")
