@@ -201,7 +201,7 @@ class GameController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.counter = 0
         start()
         
         self.tableView.estimatedRowHeight = 50;
