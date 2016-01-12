@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15480D8B1C4537D500BFC5A8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15480D8A1C4537D500BFC5A8 /* LoginController.swift */; };
+		15480D8D1C4537F900BFC5A8 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15480D8C1C4537F900BFC5A8 /* RegisterController.swift */; };
 		156B57801C42B66900258EF9 /* HighScoresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B577F1C42B66900258EF9 /* HighScoresController.swift */; };
 		156B57821C42B6AD00258EF9 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57811C42B6AD00258EF9 /* GameController.swift */; };
 		156B57841C42B6C700258EF9 /* TopicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156B57831C42B6C700258EF9 /* TopicsController.swift */; };
@@ -19,8 +21,8 @@
 		156B57941C43001500258EF9 /* mistake.png in Resources */ = {isa = PBXBuildFile; fileRef = 156B57931C43001500258EF9 /* mistake.png */; };
 		156B57961C43001E00258EF9 /* topic.png in Resources */ = {isa = PBXBuildFile; fileRef = 156B57951C43001E00258EF9 /* topic.png */; };
 		156B57981C43027100258EF9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 156B57971C43027100258EF9 /* background.png */; };
-		4236F9DC1C4418CA000E5BC9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236F9DB1C4418CA000E5BC9 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		4236F9DE1C441933000E5BC9 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236F9DD1C441933000E5BC9 /* GameCell.swift */; settings = {ASSET_TAGS = (); }; };
+		4236F9DC1C4418CA000E5BC9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236F9DB1C4418CA000E5BC9 /* HomeViewController.swift */; };
+		4236F9DE1C441933000E5BC9 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236F9DD1C441933000E5BC9 /* GameCell.swift */; };
 		AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEBA1C41552500EB41C1 /* User.swift */; };
 		AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC01C415FCC00EB41C1 /* Question.swift */; };
 		AA5CCEC31C415FFA00EB41C1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CCEC21C415FFA00EB41C1 /* Topic.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15480D8A1C4537D500BFC5A8 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		15480D8C1C4537F900BFC5A8 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		156B577F1C42B66900258EF9 /* HighScoresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresController.swift; sourceTree = "<group>"; };
 		156B57811C42B6AD00258EF9 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		156B57831C42B6C700258EF9 /* TopicsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				156B57851C42B6F700258EF9 /* QuestionController.swift */,
 				156B57871C42B71B00258EF9 /* MistakesController.swift */,
 				4236F9DB1C4418CA000E5BC9 /* HomeViewController.swift */,
+				15480D8A1C4537D500BFC5A8 /* LoginController.swift */,
+				15480D8C1C4537F900BFC5A8 /* RegisterController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -406,7 +412,9 @@
 				AA5CCEBB1C41552500EB41C1 /* User.swift in Sources */,
 				156B578C1C42B79500258EF9 /* ImageCell.swift in Sources */,
 				156B57841C42B6C700258EF9 /* TopicsController.swift in Sources */,
+				15480D8B1C4537D500BFC5A8 /* LoginController.swift in Sources */,
 				156B57801C42B66900258EF9 /* HighScoresController.swift in Sources */,
+				15480D8D1C4537F900BFC5A8 /* RegisterController.swift in Sources */,
 				156B57881C42B71B00258EF9 /* MistakesController.swift in Sources */,
 				C95DF6631C4135A500AD5045 /* FMDatabaseAdditions.m in Sources */,
 				AA5CCEC11C415FCC00EB41C1 /* Question.swift in Sources */,
