@@ -17,16 +17,40 @@ class GameController: UITableViewController {
     let aspectFloatValue  = 100
     
     var counter : Int = 0
+
+    var score : Int = 0
     
     var isClickable : Bool = true
+    
+    var wrongAnswer : String = ""
+    
+    
+    
+    var startTime = NSTimeInterval()
+    
+    var timer = NSTimer()
+    
+    var minutes : String = ""
+    
+    var seconds : String = ""
+    
     
     @IBAction func onNextClick(sender: UIBarButtonItem) {
         if(counter < (questions.count - 1)){
             nextQuestion()
+        } else {
+            stop()
+            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
+            for (_, element) in errors.enumerate() {
+                print(element.toString())
+            }
+            print("minutes: " + minutes + " seconds: " + seconds)
         }
     }
     
     var currAnswer : String = ""
+    
+    var cell : UITableViewCell!
     
     @IBOutlet var table: UITableView!
     
@@ -36,6 +60,55 @@ class GameController: UITableViewController {
         case Question(text: String)
         case Answer(text: String)
         case Image(aspectRatio: CGFloat, imagePath: String)
+    }
+    
+    func start() {
+        let aSelector : Selector = "updateTime"
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
+    func stop() {
+        timer.invalidate()
+    }
+    
+    func updateTime() {
+        
+        let currentTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        //Find the difference between current time and start time.
+        
+        var elapsedTime: NSTimeInterval = currentTime - startTime
+        
+        //calculate the minutes in elapsed time.
+        
+        let minutes = UInt8(elapsedTime / 60.0)
+        
+        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        
+        //calculate the seconds in elapsed time.
+        
+        let seconds = UInt8(elapsedTime)
+        
+        elapsedTime -= NSTimeInterval(seconds)
+        
+        //find out the fraction of milliseconds to be displayed.
+        
+//        let fraction = UInt8(elapsedTime * 100)
+        
+        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+        
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+//        let strFraction = String(format: "%02d", fraction)
+        
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        
+        self.minutes = strMinutes
+        self.seconds = strSeconds
+        
+        timerLabel.text = "\(strMinutes):\(strSeconds)"
+        
     }
     
     class Section {
@@ -67,13 +140,6 @@ class GameController: UITableViewController {
         section.setMentions(mentionsNew)
         return section
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     var question: Question? {
@@ -136,6 +202,8 @@ class GameController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        start()
         
         self.tableView.estimatedRowHeight = 50;
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -205,7 +273,6 @@ class GameController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(sections[indexPath.section].cellID, forIndexPath: indexPath)
         cell.textLabel?.textColor = UIColor.blackColor()
-        print("chuchaaaaa")
         switch sections[indexPath.section].mentions[indexPath.row] {
         
         case .Question(let question):
@@ -216,11 +283,17 @@ class GameController: UITableViewController {
             
         
         case .Answer(let answer):
+            print("shemovidaaa")
             cell.textLabel?.text = answer
             if(answer == currAnswer){
-                if(isClickable == false){
-                    print("shemodis")
+               if(isClickable){
+                    self.cell = cell
+               } else {
                     cell.textLabel?.textColor = UIColor.greenColor()
+                }
+            } else if answer == wrongAnswer {
+                if(!isClickable) {
+                    cell.textLabel?.textColor = UIColor.redColor()
                 }
             }
             cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -240,15 +313,26 @@ class GameController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(isClickable){
-            let cell = tableView.dequeueReusableCellWithIdentifier(sections[indexPath.section].cellID, forIndexPath: indexPath)
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
             let row = sections[indexPath.section].mentions[indexPath.row]
             switch row {
             case .Answer(let answer):
                 if(currAnswer == answer){
-                    print("bliaaad")
-                    cell.textLabel?.textColor = UIColor.greenColor()
-                    print("lllll")
+                    score+=1
+                } else {
+                    let error = Error()
+                    error.question = question
+                    let user = User()
+                    user.ID = 1
+                    user.name = "dikembe"
+                    user.password = "mutombo"
+                    //let tmp = dbhelper.insertUser(user)
+                    error.user = user
+                    dbhelper.insertIntoErrors(error)
+                    cell!.textLabel?.textColor = UIColor.redColor()
+                    wrongAnswer = (cell?.textLabel?.text)!
                 }
+                    self.cell.textLabel?.textColor = UIColor.greenColor()
             
                 //nextQuestion()
             default:
