@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == nil { return }
         
         if let gamecontroller = segue.destinationViewController as? GameController {
+            gamecontroller.enteredFromGame = true
             gamecontroller.questions = dbhelper.selectQuestions(10)
         }
     }

@@ -20,7 +20,10 @@ class HighScoresController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        scores = DBHelper.getDBHelper().selectTopNumberHighScores(10)
+        self.tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

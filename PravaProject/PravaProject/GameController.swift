@@ -32,7 +32,7 @@ class GameController: UITableViewController {
     
     var seconds : String = ""
     
-    
+    var enteredFromGame : Bool = false
 
     @IBAction func onNextClick(sender: UIBarButtonItem) {
         if(counter < (questions.count - 1)){
@@ -202,12 +202,17 @@ class GameController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.counter = 0
-        start()
+        
+        if(enteredFromGame){
+        
+            start()
+            
+        }
         
         self.tableView.estimatedRowHeight = 50;
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        timerLabel.text = "pirshi"
+        timerLabel.text = ""
         
         //questions = dbhelper.selectQuestions(10)
         
@@ -320,17 +325,15 @@ class GameController: UITableViewController {
                 if(currAnswer == answer){
                     score+=1
                 } else {
-                    let error = Error()
-                    error.question = question
-                    let user = User()
-                    user.ID = 1
-                    user.name = "dikembe"
-                    user.password = "mutombo"
-                    //let tmp = dbhelper.insertUser(user)
-                    error.user = user
-                    dbhelper.insertIntoErrors(error)
-                    cell!.textLabel?.textColor = UIColor.redColor()
-                    wrongAnswer = (cell?.textLabel?.text)!
+                    
+                        let error = Error()
+                        error.question = question
+                        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+                        error.user = app.user!
+                        dbhelper.insertIntoErrors(error)
+                        cell!.textLabel?.textColor = UIColor.redColor()
+                        wrongAnswer = (cell?.textLabel?.text)!
+                    
                 }
                     self.cell.textLabel?.textColor = UIColor.greenColor()
                     

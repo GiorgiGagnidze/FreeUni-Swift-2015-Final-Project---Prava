@@ -17,12 +17,22 @@ class MistakesController: UITableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        app.user = DBHelper.getDBHelper().selectUser(1)
+        print(app.user!.ID)
         errors = DBHelper.getDBHelper().selectErrorsWithQuestionsByUserID(app.user!.ID)
+       
+        
         self.tableView.reloadData()
     }
     
-    var curr = 1
+    override func viewDidAppear(animated: Bool) {
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        print(app.user!.ID)
+        errors = DBHelper.getDBHelper().selectErrorsWithQuestionsByUserID(app.user!.ID)
+        self.tableView.reloadData()
+
+    }
+    
+    var curr = 0
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,7 +66,31 @@ class MistakesController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        curr = errors[indexPath.row].ID
+        print("jer pirveli")
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        let text = cell!.textLabel?.text
+        
+        //print("textia:   " + text!)
+        
+        var str : String = ""
+        
+        for ch in text!.characters {
+            if(ch == ")" ){
+                print("rfrfrfrfrfrfrf")
+                break
+            } else {
+                str = str + String(ch)
+            }
+        }
+        
+        print(str)
+        
+        curr = Int(str)! - 1
+        
+        performSegueWithIdentifier("QuestionSegue", sender: cell)
+        
         
     }
     
@@ -68,13 +102,13 @@ class MistakesController: UITableViewController {
         
         let currScore = errors[indexPath.row]
         
-        cell.textLabel?.text = currScore.question.description
+        cell.textLabel?.text = String((indexPath.row+1)) + ")  " + currScore.question.description
         return cell
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        print("jer meore")
         if segue.identifier == nil { return }
         if(segue.identifier == "StartErrorSegue"){
             if let gamecontroller = segue.destinationViewController as? GameController {
@@ -84,15 +118,25 @@ class MistakesController: UITableViewController {
                 }
                 gamecontroller.questions = q
             }
+        } else {
+            
+            
+            
         }
         
         if(segue.identifier == "QuestionSegue"){
             if let questioncontroller = segue.destinationViewController as? QuestionController {
+                
+                print(curr)
+                
                 let q = errors[curr].question
+                
+                print("curr ^")
                 
                 questioncontroller.question = q
                 
-                print(q.description + " yleeeee")
+                print(String(curr) + " eeeee")
+                print(q.toString())
             }
 
         }

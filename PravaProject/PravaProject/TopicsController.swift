@@ -54,7 +54,28 @@ class TopicsController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        curr = topics[indexPath.row].ID
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        let text = cell!.textLabel?.text
+        
+        //print("textia:   " + text!)
+        
+        var str : String = ""
+        
+        for ch in text!.characters {
+            if(ch == ")" ){
+                print("rfrfrfrfrfrfrf")
+                break
+            } else {
+                str = str + String(ch)
+            }
+        }
+        
+        print(str)
+        
+        curr = Int(str)! - 1
+        
+        performSegueWithIdentifier("TopicsSegue", sender: cell)
         
     }
     
@@ -66,16 +87,18 @@ class TopicsController: UITableViewController {
         
         let currScore = topics[indexPath.row]
         
-        cell.textLabel?.text = currScore.topic
+        cell.textLabel?.text = String((indexPath.row+1)) + ")  " + currScore.topic
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == nil { return }
-        if let gamecontroller = segue.destinationViewController as? GameController {
-            gamecontroller.questions = DBHelper.getDBHelper().selectQuestions(curr, limitNumber: 10)
-            print( gamecontroller.questions.count)
+        if(segue.identifier == "TopicsSegue") {
+            if let gamecontroller = segue.destinationViewController as? GameController {
+                gamecontroller.questions = DBHelper.getDBHelper().selectQuestions(topics[curr].ID, limitNumber: 10)
+                print( gamecontroller.questions.count)
+            }
         }
         
     }

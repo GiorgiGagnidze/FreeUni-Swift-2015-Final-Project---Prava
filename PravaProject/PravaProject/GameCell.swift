@@ -42,7 +42,7 @@ class GameCell: UITableViewCell {
             print("missing image at: \(path)")
         } else {
         
-            print("Loading image from path: \(path)")
+            //print("Loading image from path: \(path)")
             
         }
         return image

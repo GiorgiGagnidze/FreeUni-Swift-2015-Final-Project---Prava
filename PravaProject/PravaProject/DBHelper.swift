@@ -27,7 +27,7 @@ public class DBHelper : NSObject {
         dispatch_async(queue, {
             
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest2.sqlite")
+            let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest3.sqlite")
             self.dbPath = path.description
             print(path.description)
             
@@ -65,6 +65,13 @@ public class DBHelper : NSObject {
         if(fillDBWithData){
             DataHelper.insertData()
         }
+        
+//        let bla = selectErrorsWithQuestionsByUserID(1)
+//        
+//        for(_,elem) in bla.enumerate() {
+//            print(elem.toString())
+//        }
+//        
         
         
 //        let question1 = Question()
