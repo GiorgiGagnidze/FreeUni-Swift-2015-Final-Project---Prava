@@ -32,6 +32,10 @@ class MistakesController: UITableViewController {
 
     }
     
+    @IBAction func goBack(segue: UIStoryboardSegue) {
+        
+    }
+    
     var curr = 0
     
     override func didReceiveMemoryWarning() {

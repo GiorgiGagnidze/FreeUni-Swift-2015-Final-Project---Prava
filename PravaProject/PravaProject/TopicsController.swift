@@ -29,6 +29,9 @@ class TopicsController: UITableViewController {
     
     // MARK: - Table view data source
     
+    @IBAction func goBack(segue: UIStoryboardSegue) {
+        
+    }
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

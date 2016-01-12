@@ -35,15 +35,15 @@ class GameController: UITableViewController {
     var enteredFromGame : Bool = false
 
     @IBAction func onNextClick(sender: UIBarButtonItem) {
-        if(counter < (questions.count - 1)){
+        if(counter < (questions.count)){
             nextQuestion()
         } else {
             stop()
-            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
-            for (_, element) in errors.enumerate() {
-                print(element.toString())
-            }
-            print("minutes: " + minutes + " seconds: " + seconds)
+//            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
+//            for (_, element) in errors.enumerate() {
+//                print(element.toString())
+//            }
+//            print("minutes: " + minutes + " seconds: " + seconds)
         }
     }
     
@@ -69,6 +69,35 @@ class GameController: UITableViewController {
     
     func stop() {
         timer.invalidate()
+        if enteredFromGame {
+            let app = UIApplication.sharedApplication().delegate as! AppDelegate
+            let achiev = HighScore()
+            achiev.user = app.user
+            achiev.score = score
+            let currentTime = NSDate.timeIntervalSinceReferenceDate()
+            let elapsedTime: NSTimeInterval = currentTime - startTime
+            achiev.time = Int(elapsedTime)
+            DBHelper.getDBHelper().insertHighScore(achiev)
+            self.presentViewController(makeAlert("Test finished!", message: "Score: "+String(score)+" Time: "+timerLabel.text!),animated: true, completion: nil)
+        } else {
+            performSegueWithIdentifier("unwind", sender: nil)
+        }
+    }
+    
+    func makeAlert(title: String, message: String) -> UIAlertController{
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                self.performSegueWithIdentifier("unwind", sender: nil)
+            case .Cancel:
+                print("cancel")
+                
+            case .Destructive:
+                print("destructive")
+            }
+        }))
+        return alert
     }
     
     func updateTime() {
