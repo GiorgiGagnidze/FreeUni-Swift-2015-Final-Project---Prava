@@ -10,13 +10,13 @@ import UIKit
 
 class TopicsController: UITableViewController {
     
-    var scores : [Topic] = [Topic]()
+    var topics : [Topic] = [Topic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        scores = DBHelper.getDBHelper().selectTopics()
+        topics = DBHelper.getDBHelper().selectTopics()
         self.tableView.reloadData()
     }
     
@@ -40,7 +40,7 @@ class TopicsController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.scores.count
+        return self.topics.count
     }
     
     
@@ -54,7 +54,7 @@ class TopicsController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        curr = scores[indexPath.row].ID
+        curr = topics[indexPath.row].ID
         
     }
     
@@ -64,7 +64,7 @@ class TopicsController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("topicCell", forIndexPath: indexPath)
         
-        let currScore = scores[indexPath.row]
+        let currScore = topics[indexPath.row]
         
         cell.textLabel?.text = currScore.topic
         return cell
