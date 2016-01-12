@@ -9,7 +9,7 @@
 import UIKit
 
 class GameController: UITableViewController {
-
+    
     var dbhelper : DBHelper = DBHelper.getDBHelper()
     
     var questions : [Question] = [Question]()
@@ -24,8 +24,6 @@ class GameController: UITableViewController {
     
     var wrongAnswer : String = ""
     
-    
-    
     var startTime = NSTimeInterval()
     
     var timer = NSTimer()
@@ -35,6 +33,7 @@ class GameController: UITableViewController {
     var seconds : String = ""
     
     
+
     @IBAction func onNextClick(sender: UIBarButtonItem) {
         if(counter < (questions.count - 1)){
             nextQuestion()
@@ -248,22 +247,22 @@ class GameController: UITableViewController {
     }
     
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        switch sections[indexPath.section].mentions[indexPath.row] {
-//        case .Image(let aspectRatio,_):
-//            let height = ( tableView.bounds.width - CGFloat(aspectFloatValue) ) / aspectRatio
-//            return height
-//        default:
-//            return UITableViewAutomaticDimension
-//        }
-//    }
+    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //        switch sections[indexPath.section].mentions[indexPath.row] {
+    //        case .Image(let aspectRatio,_):
+    //            let height = ( tableView.bounds.width - CGFloat(aspectFloatValue) ) / aspectRatio
+    //            return height
+    //        default:
+    //            return UITableViewAutomaticDimension
+    //        }
+    //    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch sections[indexPath.section].mentions[indexPath.row] {
         case .Image(let aspectRatio,_):
             let height = ( tableView.bounds.width - CGFloat(aspectFloatValue) ) / aspectRatio
             return height
-        
+            
         default:
             return UITableViewAutomaticDimension
         }
@@ -274,21 +273,21 @@ class GameController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(sections[indexPath.section].cellID, forIndexPath: indexPath)
         cell.textLabel?.textColor = UIColor.blackColor()
         switch sections[indexPath.section].mentions[indexPath.row] {
-        
+            
         case .Question(let question):
             cell.textLabel?.text = question
             cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
             cell.textLabel?.numberOfLines = 0
             
             
-        
+            
         case .Answer(let answer):
             print("shemovidaaa")
             cell.textLabel?.text = answer
             if(answer == currAnswer){
-               if(isClickable){
+                if(isClickable){
                     self.cell = cell
-               } else {
+                } else {
                     cell.textLabel?.textColor = UIColor.greenColor()
                 }
             } else if answer == wrongAnswer {
@@ -312,11 +311,12 @@ class GameController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(isClickable){
+        
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             let row = sections[indexPath.section].mentions[indexPath.row]
             switch row {
             case .Answer(let answer):
+                if(isClickable){
                 if(currAnswer == answer){
                     score+=1
                 } else {
@@ -333,17 +333,19 @@ class GameController: UITableViewController {
                     wrongAnswer = (cell?.textLabel?.text)!
                 }
                     self.cell.textLabel?.textColor = UIColor.greenColor()
-            
+                    
+                    isClickable = false
+                }
                 //nextQuestion()
             default:
                 break
             }
+            
         
-            isClickable = false
+            
         
-        }
     }
-
+    
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -399,6 +401,6 @@ class GameController: UITableViewController {
     // Pass the selected object to the new view controller.
     }
     */
-
+    
     
 }
