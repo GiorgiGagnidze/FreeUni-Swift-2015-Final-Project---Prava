@@ -34,7 +34,7 @@ class ImageCell: UITableViewCell {
     
     func loadImageFromPath(path: String) -> UIImage? {
         
-        let image = UIImage(contentsOfFile: path)
+        let image = UIImage(named: path)
         
         if image == nil {
             

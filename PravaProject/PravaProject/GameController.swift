@@ -184,7 +184,7 @@ class GameController: UITableViewController {
             
             if question != nil {
                 var mentions = [Mention]()
-                mentions.insert(Mention.Image(aspectRatio: CGFloat(600/350) ,imagePath: ("/Users/kokotagauri/Desktop/untitled folder/FreeUni-Swift-2015-Final-Project---Prava/PravaProject/Images/"+(question?.image)!) ), atIndex: 0)
+                mentions.insert(Mention.Image(aspectRatio: CGFloat(600/350) ,imagePath: (question?.image)! ), atIndex: 0)
                 
                 let imageSection = setSectionItem(question!, header: "Image", id: "gameCell", mentionsNew: mentions)
                 sections.append(imageSection)
