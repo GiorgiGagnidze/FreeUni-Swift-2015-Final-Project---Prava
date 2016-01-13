@@ -8,10 +8,17 @@
 
 import UIKit
 
-class TopicsController: UITableViewController {
-    
+class TopicsController: UITableViewController,NavigationControllerBackButtonDelegate {
+    lazy var navigationBarTitle  = "Topics"
+    lazy var backButtonTitle  = "Login"
     var topics : [Topic] = [Topic]()
-    
+    func viewControllerShouldPopOnBackButton() -> Bool {
+        if( self.navigationController?.viewControllers.count == 1){
+            return true
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+        return false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -26,7 +33,17 @@ class TopicsController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        
+        let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
+        navCon?.interactivePopGestureRecognizer?.enabled = true
+
+        navCon?.navigationBar.topItem?.title = navigationBarTitle
+        navCon?.navigationBar.backItem?.title = backButtonTitle
+        navCon?.topViewController!.navigationItem.rightBarButtonItem = nil
+        
+    }
+
     // MARK: - Table view data source
     
     @IBAction func goBack(segue: UIStoryboardSegue) {
@@ -100,6 +117,7 @@ class TopicsController: UITableViewController {
         if(segue.identifier == "TopicsSegue") {
             if let gamecontroller = segue.destinationViewController as? GameController {
                 gamecontroller.questions = DBHelper.getDBHelper().selectQuestions(topics[curr].ID, limitNumber: 10)
+                gamecontroller.backButtonName = self.navigationBarTitle
                 print( gamecontroller.questions.count)
             }
         }

@@ -96,7 +96,13 @@ class QuestionController: UITableViewController {
         }
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
+        navCon?.interactivePopGestureRecognizer?.enabled = false
+        navCon?.navigationBar.topItem?.title = "Question"
+        navCon?.navigationBar.backItem?.title = "Errors"
+        navCon?.topViewController!.navigationItem.rightBarButtonItem = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

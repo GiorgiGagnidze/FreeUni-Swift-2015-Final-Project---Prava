@@ -10,6 +10,8 @@ import UIKit
 
 class GameController: UITableViewController {
     
+    var backButtonName : String?
+    
     var dbhelper : DBHelper = DBHelper.getDBHelper()
     
     var questions : [Question] = [Question]()
@@ -220,14 +222,47 @@ class GameController: UITableViewController {
         isClickable = true
         print(counter)
         counter += 1;
-        
+        transition(kCATransitionFromRight)
         self.tableView.reloadData()
     }
     
     
-    
-    
-    
+    func transition(transactionType:String){
+        
+        let transition = CATransition()
+        transition.type = kCATransitionPush
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        transition.fillMode = kCAFillModeForwards
+        transition.duration = 0.2
+        transition.subtype = transactionType
+        self.tableView.layer.addAnimation(transition, forKey: "UITableViewReloadDataAnimationKey")
+        // Update your data source here
+        
+        self.tableView.reloadData()
+    }
+    func nextbuttonAction(){
+        if(counter < (questions.count - 1)){
+            nextQuestion()
+        } else {
+            stop()
+            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
+            for (_, element) in errors.enumerate() {
+                print(element.toString())
+            }
+            print("minutes: " + minutes + " seconds: " + seconds)
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+      
+        let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
+        navCon?.interactivePopGestureRecognizer?.enabled = false
+        navCon?.navigationBar.topItem?.title = "Test"
+        navCon?.navigationBar.backItem?.title = backButtonName
+        let next =  UIBarButtonItem(title: "next", style: .Plain, target: self, action: "nextbuttonAction")
+        navCon?.topViewController!.navigationItem.rightBarButtonItem = next
+        navCon?.navigationItem.rightBarButtonItem?.enabled = true
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.counter = 0
@@ -237,6 +272,7 @@ class GameController: UITableViewController {
             start()
             
         }
+        
         
         self.tableView.estimatedRowHeight = 50;
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -312,10 +348,12 @@ class GameController: UITableViewController {
             cell.textLabel?.text = question
             cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
             cell.textLabel?.numberOfLines = 0
-            
+            cell.userInteractionEnabled = false
             
             
         case .Answer(let answer):
+            cell.userInteractionEnabled = true
+
             print("shemovidaaa")
             cell.textLabel?.text = answer
             if(answer == currAnswer){
@@ -337,6 +375,9 @@ class GameController: UITableViewController {
             if let imageCell = cell as? GameCell{
                 imageCell.imagePath = imagePath
             }
+            cell.userInteractionEnabled = false
+        
+
         }
         
         

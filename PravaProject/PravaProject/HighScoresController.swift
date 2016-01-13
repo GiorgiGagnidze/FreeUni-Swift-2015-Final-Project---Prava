@@ -21,6 +21,7 @@ class HighScoresController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         scores = DBHelper.getDBHelper().selectTopNumberHighScores(10)
         self.tableView.reloadData()
     }
@@ -32,7 +33,15 @@ class HighScoresController: UITableViewController {
     
     // MARK: - Table view data source
     
-    
+    override func viewWillAppear(animated: Bool) {
+        
+        let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
+        navCon?.interactivePopGestureRecognizer?.enabled = true
+        navCon?.navigationBar.topItem?.title = "High scores"
+        navCon?.navigationBar.backItem?.title = "Login"
+        navCon?.topViewController!.navigationItem.rightBarButtonItem = nil
+        
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.

@@ -8,10 +8,21 @@
 
 import UIKit
 
-class MistakesController: UITableViewController {
-    
+class MistakesController: UITableViewController,NavigationControllerBackButtonDelegate {
+    lazy var navigationBarTitle  = "Errors"
+    lazy var backButtonTitle  = "Login"
+
     var errors : [Error] = [Error]()
-    
+    func viewControllerShouldPopOnBackButton() -> Bool {
+        if( self.navigationController?.viewControllers.count == 1){
+            return true
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+        return false
+    }
+    func nextbuttonAction(){
+       performSegueWithIdentifier("StartErrorSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -24,8 +35,24 @@ class MistakesController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
+        navCon?.interactivePopGestureRecognizer?.enabled = true
+
+        navCon?.navigationBar.topItem?.title = navigationBarTitle
+        navCon?.navigationBar.backItem?.title = backButtonTitle
+        let next =  UIBarButtonItem(title: "Start", style: .Plain, target: self, action: "nextbuttonAction")
+        navCon?.topViewController!.navigationItem.rightBarButtonItem = next
+        navCon?.navigationItem.rightBarButtonItem?.enabled = true
+
+        
+    }
+
+    
     override func viewDidAppear(animated: Bool) {
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        
         print(app.user!.ID)
         errors = DBHelper.getDBHelper().selectErrorsWithQuestionsByUserID(app.user!.ID)
         self.tableView.reloadData()
@@ -121,6 +148,7 @@ class MistakesController: UITableViewController {
                     q.append(element.question)
                 }
                 gamecontroller.questions = q
+                gamecontroller.backButtonName = navigationBarTitle
             }
         } else {
             

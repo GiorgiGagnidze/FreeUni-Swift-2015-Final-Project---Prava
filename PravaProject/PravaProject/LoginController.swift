@@ -32,6 +32,9 @@ class LoginController: UIViewController {
         
     }
     
+    override func viewDidLoad() {
+        (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController  = self.navigationController
+    }
     static func makeAlert(title: String, message: String) -> UIAlertController{
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
