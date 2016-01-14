@@ -9,7 +9,7 @@
 import UIKit
 
 class MistakesController: UITableViewController,NavigationControllerBackButtonDelegate {
-    lazy var navigationBarTitle  = "Errors"
+    lazy var navigationBarTitle  = "Mistakes"
     lazy var backButtonTitle  = "Login"
 
     var errors : [Error] = [Error]()
@@ -20,16 +20,22 @@ class MistakesController: UITableViewController,NavigationControllerBackButtonDe
         self.navigationController?.popViewControllerAnimated(true)
         return false
     }
+    
     func nextbuttonAction(){
-       performSegueWithIdentifier("StartErrorSegue", sender: self)
+        if (errors.count > 0) {
+            performSegueWithIdentifier("StartErrorSegue", sender: self)
+        } else {
+            self.presentViewController(LoginController.makeAlert("Warning!", message: "There ar no mistakes to make test with them."),
+                animated: true, completion: nil)
+        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         errors = DBHelper.getDBHelper().selectErrorsWithQuestionsByUserID(app.user!.ID)
-       
         
         self.tableView.reloadData()
     }
@@ -111,8 +117,6 @@ class MistakesController: UITableViewController,NavigationControllerBackButtonDe
         curr = Int(str)! - 1
         
         performSegueWithIdentifier("QuestionSegue", sender: cell)
-        
-        
     }
     
     
@@ -139,10 +143,6 @@ class MistakesController: UITableViewController,NavigationControllerBackButtonDe
                 gamecontroller.questions = q
                 gamecontroller.backButtonName = navigationBarTitle
             }
-        } else {
-            
-            
-            
         }
         
         if(segue.identifier == "QuestionSegue"){

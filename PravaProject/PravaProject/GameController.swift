@@ -256,18 +256,13 @@ class GameController: UITableViewController {
         self.counter = 0
         
         if(enteredFromGame){
-        
             start()
-            
         }
-        
         
         self.tableView.estimatedRowHeight = 50;
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         timerLabel.text = ""
-        
-        //questions = dbhelper.selectQuestions(10)
         
         self.question = questions[counter]
         
@@ -303,17 +298,6 @@ class GameController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].header
     }
-    
-    
-    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        switch sections[indexPath.section].mentions[indexPath.row] {
-    //        case .Image(let aspectRatio,_):
-    //            let height = ( tableView.bounds.width - CGFloat(aspectFloatValue) ) / aspectRatio
-    //            return height
-    //        default:
-    //            return UITableViewAutomaticDimension
-    //        }
-    //    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch sections[indexPath.section].mentions[indexPath.row] {
