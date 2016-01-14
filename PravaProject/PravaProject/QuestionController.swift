@@ -99,7 +99,7 @@ class QuestionController: UITableViewController {
         let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
         navCon?.interactivePopGestureRecognizer?.enabled = false
         navCon?.navigationBar.topItem?.title = "Question"
-        navCon?.navigationBar.backItem?.title = "Errors"
+        navCon?.navigationBar.backItem?.title = "Mistakes"
         navCon?.topViewController!.navigationItem.rightBarButtonItem = nil
     }
     
@@ -130,17 +130,6 @@ class QuestionController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].header
     }
-    
-    
-    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        switch sections[indexPath.section].mentions[indexPath.row] {
-    //        case .Image(let aspectRatio,_):
-    //            let height = ( tableView.bounds.width - CGFloat(aspectFloatValue) ) / aspectRatio
-    //            return height
-    //        default:
-    //            return UITableViewAutomaticDimension
-    //        }
-    //    }
     
     let aspectFloatValue  = 100
     

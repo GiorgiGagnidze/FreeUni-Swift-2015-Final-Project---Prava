@@ -29,7 +29,6 @@ public class DBHelper : NSObject {
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
             let path =   NSURL(fileURLWithPath: documentsFolder).URLByAppendingPathComponent("PravaTest3.sqlite")
             self.dbPath = path.description
-            print(path.description)
             
             self.database = FMDatabase(path: path.description)
             
@@ -323,11 +322,9 @@ public class DBHelper : NSObject {
                     found = true
                 }
                 if(found){
-                    print("agar bratva error")
                     return
                 }
         }
-        print("chavamate bratva error")
         let isInserted = database.executeUpdate("INSERT INTO Errors (userId, questionId) VALUES (?, ?)", withArgumentsInArray: [error.user.ID, error.question.ID])
         if !isInserted {
             print("insert 1 table failed: \(database!.lastErrorMessage())")
