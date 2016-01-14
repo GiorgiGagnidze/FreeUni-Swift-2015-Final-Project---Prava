@@ -460,19 +460,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="lvJ-2Z-3np">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-1g-Qdc">
-                                <rect key="frame" x="216" y="284" width="169" height="47"/>
+                                <rect key="frame" x="216" y="276" width="169" height="47"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="169" id="JHl-cz-Qbk"/>
+                                    <constraint firstAttribute="width" constant="169" id="SnH-HR-a2u"/>
+                                    <constraint firstAttribute="height" constant="47" id="a8a-Um-QFa"/>
+                                    <constraint firstAttribute="width" constant="169" id="aTi-HY-E5e"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="plP-cS-i7w"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Start Test">
-                                    <color key="titleColor" red="0.99529613874345546" green="0.99529613874345546" blue="0.99529613874345546" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aTi-HY-E5e"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="buttonClicked:" destination="Ubc-nO-XkX" eventType="touchUpInside" id="cC0-v6-aJl"/>
                                     <segue destination="MzI-g1-3tY" kind="show" identifier="GameSegue" id="SXI-72-nRc"/>
@@ -482,14 +490,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="leading" secondItem="wau-ke-NWD" secondAttribute="leading" id="7P3-4q-K1I"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerX" secondItem="lvJ-2Z-3np" secondAttribute="centerX" id="Ecq-FJ-TKX"/>
-                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="top" secondItem="wau-ke-NWD" secondAttribute="top" constant="64" id="Kut-Ah-rz5"/>
-                            <constraint firstAttribute="trailing" secondItem="lvJ-2Z-3np" secondAttribute="trailing" id="Myu-RK-gTZ"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerY" secondItem="lvJ-2Z-3np" secondAttribute="centerY" id="bxa-1k-ydE"/>
+                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="top" secondItem="wau-ke-NWD" secondAttribute="top" id="1Vr-4f-vcI"/>
+                            <constraint firstAttribute="bottom" secondItem="lvJ-2Z-3np" secondAttribute="bottom" id="9b5-Z9-yK0"/>
+                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="leading" secondItem="wau-ke-NWD" secondAttribute="leading" id="JqX-HZ-L03"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" constant="212" id="OAC-on-xge"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerX" secondItem="lvJ-2Z-3np" secondAttribute="centerX" id="YRV-v1-bbY"/>
+                            <constraint firstAttribute="trailing" secondItem="lvJ-2Z-3np" secondAttribute="trailing" id="fUb-1a-vkf"/>
                             <constraint firstItem="lvJ-2Z-3np" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" id="iSI-68-9S9"/>
-                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="top" secondItem="T3p-rL-xKi" secondAttribute="bottom" constant="220" id="mUr-ua-kWw"/>
-                            <constraint firstItem="lvJ-2Z-3np" firstAttribute="bottom" secondItem="n5z-HT-RQ9" secondAttribute="top" id="smC-0Q-rvR"/>
+                            <constraint firstItem="B0Q-1g-Qdc" firstAttribute="centerY" secondItem="lvJ-2Z-3np" secondAttribute="centerY" id="ysL-rO-pvC"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
