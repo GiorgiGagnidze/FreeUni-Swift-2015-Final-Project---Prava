@@ -71,9 +71,26 @@ class HighScoresController: UITableViewController {
         
         cell.nameLabel.text = currScore.user.name
         cell.scoreLabel.text = String(currScore.score)
-        cell.timeLabel.text = String(currScore.time)
+        
+        let (h,m,s) = secondsToHoursMinutesSeconds(currScore.time)
+        
+        let hours = addZeroBefore(String(h))
+        let minutes = addZeroBefore(String(m))
+        let seconds = addZeroBefore(String(s))
+        cell.timeLabel.text = String(hours+":"+minutes+":"+seconds)
         
         return cell
+    }
+    
+    private func addZeroBefore (var time : String) -> String {
+        if (time.characters.count == 1){
+            time = "0"+time
+        }
+        return time
+    }
+    
+    private func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
 }
