@@ -606,16 +606,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30f-Qd-jDq">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="178"/>
                                             <animations/>
                                         </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="top" secondItem="uzM-PA-vFA" secondAttribute="top" id="JAf-ua-Gjx"/>
-                                        <constraint firstAttribute="trailing" secondItem="30f-Qd-jDq" secondAttribute="trailing" id="gIh-nE-Oew"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="30f-Qd-jDq" secondAttribute="bottom" constant="31" id="q6d-jd-uOE"/>
-                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="leading" secondItem="uzM-PA-vFA" secondAttribute="leading" id="spX-0g-V4e"/>
+                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="top" secondItem="uzM-PA-vFA" secondAttribute="top" id="20z-Cc-h4b"/>
+                                        <constraint firstItem="30f-Qd-jDq" firstAttribute="leading" secondItem="uzM-PA-vFA" secondAttribute="leading" id="CV0-n2-Qhl"/>
+                                        <constraint firstAttribute="bottom" secondItem="30f-Qd-jDq" secondAttribute="bottom" id="IKE-oa-BYd"/>
+                                        <constraint firstAttribute="trailing" secondItem="30f-Qd-jDq" secondAttribute="trailing" id="v4L-cH-Qv0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -651,11 +651,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Test" id="C8s-dw-Y7f">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="zQe-7Z-uEV">
-                            <connections>
-                                <action selector="onNextClick:" destination="MzI-g1-3tY" id="4hn-TJ-0pv"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="zQe-7Z-uEV"/>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="qwQ-2E-3Qz" id="2wW-JA-ttF"/>

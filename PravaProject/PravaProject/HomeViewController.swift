@@ -56,9 +56,12 @@ extension UINavigationController {
 }
 
 class HomeViewController: UIViewController,NavigationControllerBackButtonDelegate {
+    
     lazy var navigationBarTitle  = "Home"
     lazy var backButtonTitle  = "Login"
+    
     var dbhelper : DBHelper = DBHelper.getDBHelper()
+    
     func viewControllerShouldPopOnBackButton() -> Bool {
         if( self.navigationController?.viewControllers.count == 1){
             return true
@@ -66,15 +69,18 @@ class HomeViewController: UIViewController,NavigationControllerBackButtonDelegat
         self.navigationController?.popViewControllerAnimated(true)
         return false
     }
+    
     @IBAction func buttonClicked(sender: UIButton) {
         //self.performSegueWithIdentifier("GameSegue", sender: self)
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(animated: Bool) {
    
         let navCon = (( UIApplication.sharedApplication().delegate) as! AppDelegate).navigationController
@@ -85,6 +91,7 @@ class HomeViewController: UIViewController,NavigationControllerBackButtonDelegat
         navCon?.topViewController!.navigationItem.rightBarButtonItem = nil
         navCon?.navigationItem.rightBarButtonItem?.enabled = true
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

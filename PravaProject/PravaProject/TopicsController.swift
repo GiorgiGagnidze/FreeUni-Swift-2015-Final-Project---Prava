@@ -11,7 +11,9 @@ import UIKit
 class TopicsController: UITableViewController,NavigationControllerBackButtonDelegate {
     lazy var navigationBarTitle  = "Topics"
     lazy var backButtonTitle  = "Login"
+    
     var topics : [Topic] = [Topic]()
+    
     func viewControllerShouldPopOnBackButton() -> Bool {
         if( self.navigationController?.viewControllers.count == 1){
             return true
@@ -19,6 +21,7 @@ class TopicsController: UITableViewController,NavigationControllerBackButtonDele
         self.navigationController?.popViewControllerAnimated(true)
         return false
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight

@@ -35,14 +35,6 @@ class GameController: UITableViewController {
     var seconds : String = ""
     
     var enteredFromGame : Bool = false
-
-    @IBAction func onNextClick(sender: UIBarButtonItem) {
-        if(counter < (questions.count)){
-            nextQuestion()
-        } else {
-            stop()
-        }
-    }
     
     var currAnswer : String = ""
     
@@ -246,7 +238,7 @@ class GameController: UITableViewController {
         navCon?.interactivePopGestureRecognizer?.enabled = false
         navCon?.navigationBar.topItem?.title = "Test"
         navCon?.navigationBar.backItem?.title = backButtonName
-        let next =  UIBarButtonItem(title: "next", style: .Plain, target: self, action: "nextbuttonAction")
+        let next =  UIBarButtonItem(title: "Next", style: .Plain, target: self, action: "nextbuttonAction")
         navCon?.topViewController!.navigationItem.rightBarButtonItem = next
         navCon?.navigationItem.rightBarButtonItem?.enabled = true
 
