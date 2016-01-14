@@ -60,7 +60,6 @@ class QuestionController: UITableViewController {
             
             
             for ans in (question?.answers)! {
-                print(ans.toString())
                 if(ans.isTrue > 0){
                     currAnswer = ans.answer
                 }
@@ -170,7 +169,6 @@ class QuestionController: UITableViewController {
             
             
         case .Answer(let answer):
-            print("shemovidaaa")
             cell.textLabel?.text = answer
             if(answer == currAnswer){
                 

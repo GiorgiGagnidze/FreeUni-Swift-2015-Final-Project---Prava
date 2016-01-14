@@ -78,21 +78,15 @@ class TopicsController: UITableViewController,NavigationControllerBackButtonDele
         
         let text = cell!.textLabel?.text
         
-        //print("textia:   " + text!)
-        
         var str : String = ""
         
         for ch in text!.characters {
             if(ch == ")" ){
-                print("rfrfrfrfrfrfrf")
                 break
             } else {
                 str = str + String(ch)
             }
         }
-        
-        print(str)
-        
         curr = Int(str)! - 1
         
         performSegueWithIdentifier("TopicsSegue", sender: cell)
@@ -118,7 +112,6 @@ class TopicsController: UITableViewController,NavigationControllerBackButtonDele
             if let gamecontroller = segue.destinationViewController as? GameController {
                 gamecontroller.questions = DBHelper.getDBHelper().selectQuestions(topics[curr].ID, limitNumber: 10)
                 gamecontroller.backButtonName = self.navigationBarTitle
-                print( gamecontroller.questions.count)
             }
         }
         

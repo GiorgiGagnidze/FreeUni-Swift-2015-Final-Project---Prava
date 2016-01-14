@@ -41,11 +41,6 @@ class GameController: UITableViewController {
             nextQuestion()
         } else {
             stop()
-//            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
-//            for (_, element) in errors.enumerate() {
-//                print(element.toString())
-//            }
-//            print("minutes: " + minutes + " seconds: " + seconds)
         }
     }
     
@@ -178,7 +173,6 @@ class GameController: UITableViewController {
             
             
             for ans in (question?.answers)! {
-                print(ans.toString())
                 if(ans.isTrue > 0){
                     currAnswer = ans.answer
                 }
@@ -220,7 +214,6 @@ class GameController: UITableViewController {
     func nextQuestion(){
         self.question = questions[counter]
         isClickable = true
-        print(counter)
         counter += 1;
         transition(kCATransitionFromRight)
         self.tableView.reloadData()
@@ -241,15 +234,10 @@ class GameController: UITableViewController {
         self.tableView.reloadData()
     }
     func nextbuttonAction(){
-        if(counter < (questions.count - 1)){
+        if(counter < (questions.count)){
             nextQuestion()
         } else {
             stop()
-            let errors = dbhelper.selectErrorsWithQuestionsByUserID(1);
-            for (_, element) in errors.enumerate() {
-                print(element.toString())
-            }
-            print("minutes: " + minutes + " seconds: " + seconds)
         }
     }
     override func viewWillAppear(animated: Bool) {
@@ -354,7 +342,6 @@ class GameController: UITableViewController {
         case .Answer(let answer):
             cell.userInteractionEnabled = true
 
-            print("shemovidaaa")
             cell.textLabel?.text = answer
             if(answer == currAnswer){
                 if(isClickable){
